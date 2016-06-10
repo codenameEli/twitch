@@ -1,0 +1,24 @@
+// For Bourbon settings
+
+$em-base: 18px;
+
+// Grid Settings
+$visual-grid: false;
+
+/// Sets the visual grid color. Set with `!global` flag.
+$visual-grid-color: #568F90;
+
+/// Sets the `z-index` property of the visual grid. Can be `back` (behind content) or `front` (in front of content). Set with `!global` flag.
+$visual-grid-index: back;
+
+/// Sets the opacity property of the visual grid. Set with `!global` flag.
+$visual-grid-opacity: 0.4;
+
+$visual-grid-breakpoints: () !default;
+
+
+// Change the grid settings
+$column: 90px;
+$gutter: 30px;
+$grid-columns: 12;
+$max-width: 1200px;

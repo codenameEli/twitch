@@ -1,0 +1,58 @@
+@include selection {
+  background-color: $secondaryColor;
+  color: #FFF;
+}
+
+@include placeholder {
+	color: #000;
+}
+
+input,
+textarea {
+	@include transition(all 0.1s ease-in-out);
+	&:focus {
+		outline: 2px solid $primaryColor;
+	}
+}
+
+.mobile-only {
+	display: none !important;
+	@include media($small) {
+		display: block !important;
+	}
+}
+
+body {
+    color: #333;
+    font-size: $em-base;
+    font-family: $lightFamily;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $boldFamily;
+}
+
+h1,
+h2 {
+	text-transform: uppercase;
+}
+
+a {
+	@include general-transition;
+	text-decoration: none;
+	color: #000;
+	&:hover {
+		color: $secondaryColor;
+	}
+}
+
+b,
+strong {
+	font-family: $boldFamily;
+}

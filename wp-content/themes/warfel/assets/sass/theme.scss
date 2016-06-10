@@ -1,30 +1,32 @@
-/**
-* THEME SASS
-*/
+// First things first, a general reset
+@import "includes/reset";
 
-// Bootstrap
-//@import "./bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss";
-//@import "./bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_mixins.scss";
-//@import "./bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_grid.scss";
+// Font Awesome
+// @import "/bower_components/fontawesome/css/font-awesome.min.css";
 
-// Bourbon / Neat
-//@import "./bower_components/bourbon/app/assets/stylesheets/bourbon.scss";
-//@import "./bower_components/neat/app/assets/stylesheets/_neat.scss";
+// Bourbon + Neat
+@import "vendor/bourbon/bourbon";
+@import "includes/settings"; // Change grid settings here!!!
+@import "vendor/neat/neat";
 
-// Fontawesome
-//@import "./bower_components/fontawesome/css/font-awesome.min.css";
+// Slick Slider
+//@import "vendor/slick/slick";
+//@import "includes/slick";
 
-// Variables
-//@import "includes/variables.scss";
+// Globals
+@import "includes/variables";
+@import "includes/transitions";
+@import "includes/globals";
+@import "includes/buttons";
+@import "includes/images";
 
-// Layout
-//@import "includes/layout.scss";
+// Header
+@import "includes/header";
 
-// Header, Navigation, and Footer
-//@import "includes/header.scss";
-//@import "includes/navigation.scss";
-//@import "includes/footer.scss";
+// Footer
+@import "includes/footer";
 
-// Content
-//@import "includes/content";
-
+// Standard Templates
+@import "includes/archive";
+@import "includes/single";
+@import "includes/page-home";

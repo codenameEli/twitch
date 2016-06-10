@@ -1,0 +1,19 @@
+#{$all-buttons},
+.anchor-button {
+	font-family: $boldFamily;
+	font-size: em(24);
+	background-color: $primaryColor;
+	border: 0;
+	color: #FFF;
+	text-transform: uppercase;
+	padding: 15px 30px;
+}
+
+#{$all-buttons-focus},
+#{$all-buttons-hover},
+#{$all-buttons-active},
+.anchor-button:focus,
+.anchor-button:hover,
+.anchor-button:active {
+	color: #FFF;
+}

@@ -1,0 +1,15 @@
+$primaryColor: #175F55;
+$secondaryColor: #3AAB6F;
+
+$baseBorderWidth:  2px;
+
+$lightFamily: "Serif Light";
+$boldFamily: "Serif Bold";
+
+$comp: new-breakpoint(max-width 1700px); // size of the comp sliced
+$large: new-breakpoint(max-width 75em); // large desktops
+$medium: new-breakpoint(max-width 61.9em); //tablet
+$small: new-breakpoint(max-width 48em); // landscape
+$xsmall: new-breakpoint(max-width 33.9em); //portrait
+
+$max-width: 1200px;
