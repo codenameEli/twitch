@@ -1,19 +1,95 @@
 #{$all-buttons},
-.anchor-button {
-	font-family: $boldFamily;
-	font-size: em(24);
-	background-color: $primaryColor;
+.button {
+	position: relative;
+	font-family: $fontFamily;
+	font-size: em(14px);
+	background-color: #F1F1F2;
 	border: 0;
-	color: #FFF;
+	color: #A6A8AB;
 	text-transform: uppercase;
 	padding: 15px 30px;
+	display: inline-block;
+    white-space: nowrap;
+	border-color: #F1F1F2;
+	&:before {
+		content: "";
+	}
 }
 
 #{$all-buttons-focus},
 #{$all-buttons-hover},
 #{$all-buttons-active},
-.anchor-button:focus,
-.anchor-button:hover,
-.anchor-button:active {
-	color: #FFF;
+.button:focus,
+.button:hover,
+.button:active {
+	text-decoration: none;
+	border: 1px solid #F1F1F2;
+	background: transparent;
+	&:before {
+		content: "";
+		position: absolute;
+		background: #FFF;
+		width: 80%;
+		height: 1px;
+		top: -1px;
+		left: 10%;
+	}
+	&:after {
+		content: "";
+		position: absolute;
+		background: #FFF;
+		width: 80%;
+		height: 1px;
+		bottom: -1px;
+		left: 10%;
+	}
+}
+
+.red-button {
+	@extend .button;
+	background-color: transparent;
+	border: 1px solid $primaryColor;
+	&:focus,
+	&:hover,
+	&:active {
+		border: 1px solid $primaryColor;
+		&:before,
+		&:after {
+			background: #FFF;
+		}
+	}
+}
+
+.grey-button {
+	@extend .button;
+	background-color: #F1F1F2;
+	border: 1px solid #F1F1F2;
+	&:focus,
+	&:hover,
+	&:active {
+		border: 1px solid #F1F1F2;
+		&:before,
+		&:after {
+			background: #FFF;
+		}
+	}
+}
+
+.underline-button {
+	color: #A6A8AB;
+	text-transform: uppercase;
+    @include general-transition;
+	&:hover {
+		text-decoration: none;
+		&:after {
+			background-color: $primaryColor;
+		}
+	}
+	&:after {
+		content: "";
+		display: block;
+		height: 2px;
+		width: 100%;
+		background-color: #BBBDBF;
+	}
 }

@@ -1,0 +1,12 @@
+.hero-slideshow-container {
+    @extend .slick-circles;
+    .slick-dots {
+        @include align-items(center);
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(center);
+        position: absolute;
+        top: 100px;
+        right: 0;
+    }
+}

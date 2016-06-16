@@ -2,6 +2,12 @@
 
 add_action( 'init', 'tower_register_footer_menu' );
 add_action( 'genesis_footer', 'tower_do_footer_menu' );
+add_action( 'genesis_footer', 'tower_do_social_icons' );
+
+function tower_do_social_icons()
+{
+	get_template_part( 'partials/radial-swoop-social-icons' );
+}
 
 function tower_register_footer_menu()
 {

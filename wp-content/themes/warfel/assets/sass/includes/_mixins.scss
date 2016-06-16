@@ -1,0 +1,28 @@
+@mixin general-transition {
+    @include transition(all 0.35s ease);
+}
+
+@mixin side-by-side-lists()
+{
+    width: 270px;
+    display: block;
+    &:nth-of-type(odd) {
+        float: left;
+        clear: left;
+    }
+    &:nth-of-type(even) {
+        float: left;
+        margin: 0 0 0 50px;
+    }
+    &:last-of-type {
+        + * {
+           clear: both;
+        }
+    }
+
+    li {
+        &:nth-child(2) {
+            clear: both;
+        }
+    }
+}

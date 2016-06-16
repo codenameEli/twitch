@@ -1,0 +1,27 @@
+$input-bg:           #F1F1F2;
+$input-color:        #404041;
+$input-border:       #F1F1F2;
+$input-border-focus: #BBBDBF;
+$input-label:        #666;
+$input-error:        $primaryColor;
+$input-shadow:       1px 1px 2px #eee inset;
+$input-transition:   all .3s ease-in-out;
+
+$form-button-background:       transparent;
+$form-button-background-hover: #0078e7;
+$form-button-color:            #A6A8AB;
+
+$form-required: $primaryColor;
+$form-muted:    #858585;
+
+$form-font-size:   14px;
+$form-text-transform: uppercase;
+$form-line-height: $form-font-size * 1.5;
+$form-space:       $form-line-height / 2;
+
+$white: #fff;
+$gray:  #aaa;
+
+@import "../vendor/gravity-forms/form-mixins";
+@import "../vendor/gravity-forms/form-default";
+@import "../vendor/gravity-forms/form-gravity";

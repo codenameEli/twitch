@@ -8,17 +8,27 @@
 @import "vendor/bourbon/bourbon";
 @import "includes/settings"; // Change grid settings here!!!
 @import "vendor/neat/neat";
-
-// Slick Slider
-//@import "vendor/slick/slick";
-//@import "includes/slick";
+@import "vendor/font-awesome/font-awesome";
 
 // Globals
 @import "includes/variables";
-@import "includes/transitions";
+@import "includes/mixins";
 @import "includes/globals";
-@import "includes/buttons";
 @import "includes/images";
+
+// Components
+@import "includes/components/radial-swoop";
+@import "includes/components/hero-slideshow";
+@import "includes/components/cta-slideshow";
+@import "includes/components/repeatable-blocks";
+@import "includes/components/social-rotator";
+@import "includes/buttons";
+@import "includes/icons";
+@import "includes/forms";
+
+// Slick
+@import "vendor/slick/slick";
+@import "includes/slick";
 
 // Header
 @import "includes/header";

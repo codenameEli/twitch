@@ -1,10 +1,11 @@
 @include selection {
-  background-color: $secondaryColor;
-  color: #FFF;
+	background-color: $secondaryColor;
+	color: #FFF;
 }
 
 @include placeholder {
-	color: #000;
+	color: #A6A8AB;
+    font-weight: 300;
 }
 
 input,
@@ -15,18 +16,12 @@ textarea {
 	}
 }
 
-.mobile-only {
-	display: none !important;
-	@include media($small) {
-		display: block !important;
-	}
-}
-
 body {
-    color: #333;
-    font-size: $em-base;
-    font-family: $lightFamily;
-    margin: 0;
+	color: #808184;
+	font-size: $em-base;
+	font-family: $fontFamily;
+	font-weight: 300;
+	margin: 0;
 }
 
 h1,
@@ -35,24 +30,62 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: $boldFamily;
+  	font-family: $fontFamily;
 }
 
-h1,
+h1 {
+	font-size: em(26px);
+	color: $primaryColor;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
 h2 {
+	font-size: em(17px);
+	color: $secondaryColor;
+}
+
+h3 {
+	font-size: em(14px);
+	font-weight: 300;
+	color: $primaryColor;
+}
+
+h4 {
+	font-size: em(18px);
+	color: $secondaryColor;
+	text-transform: uppercase;
+}
+
+h5 {
+	@extend h4;
+	color: $primaryColor;
+}
+
+h6 {
+	font-size: em(14px);
+	color: $secondaryColor;
 	text-transform: uppercase;
 }
 
 a {
 	@include general-transition;
 	text-decoration: none;
-	color: #000;
+	color: $primaryColor;
 	&:hover {
-		color: $secondaryColor;
+		text-decoration: underline;
 	}
 }
 
 b,
 strong {
-	font-family: $boldFamily;
+	font-family: $fontFamily;
+}
+
+article > ul {
+	@include side-by-side-lists;
+}
+
+section {
+	@include outer-container();
 }

@@ -1,4 +1,6 @@
 <?php
+// Composer
+require_once( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 add_action( 'genesis_setup', 'tower_load_include_files', 15 );
 

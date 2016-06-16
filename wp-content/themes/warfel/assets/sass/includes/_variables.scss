@@ -1,10 +1,9 @@
-$primaryColor: #175F55;
-$secondaryColor: #3AAB6F;
+$primaryColor: #EC1E24;
+$secondaryColor: #404041;
 
 $baseBorderWidth:  2px;
 
-$lightFamily: "Serif Light";
-$boldFamily: "Serif Bold";
+$fontFamily: 'Roboto', sans-serif;
 
 $comp: new-breakpoint(max-width 1700px); // size of the comp sliced
 $large: new-breakpoint(max-width 75em); // large desktops
@@ -12,4 +11,9 @@ $medium: new-breakpoint(max-width 61.9em); //tablet
 $small: new-breakpoint(max-width 48em); // landscape
 $xsmall: new-breakpoint(max-width 33.9em); //portrait
 
-$max-width: 1200px;
+$max-width: 1400px;
+
+$facebookColor: #3A5A98;
+$twitterColor: #5FA8DC;
+$linkedInColor: #0078B5;
+$instagramColor: #833ab4;

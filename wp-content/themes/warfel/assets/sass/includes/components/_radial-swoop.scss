@@ -1,0 +1,52 @@
+.radial-swoop {
+    $fill: #9C0;
+    $background: #E6E7E8;
+    $size: 56px;
+    $strokeWidth: $size * .2;
+    $strokeWidth: 8px;
+    $transition: transform 0.4s ease-in-out;
+    $inset: $size - $strokeWidth;
+
+    width: $size;
+    height: $size;
+    background-color: $background;
+    border-radius: 50%;
+    &:hover {
+        .fill,
+        .half {
+            transform: rotate(180deg);
+        }
+    }
+
+    .circle {
+        .mask,
+        .fill {
+            @include backface-visibility(hidden);
+            width: $size;
+            height: $size;
+            position: absolute;
+            border-radius: 50%;
+            transition: $transition;
+        }
+        .mask {
+            clip: rect(0px, $size, $size, $size/2);
+
+            .fill {
+                clip: rect(0px, $size/2, $size, 0px);
+                background-color: $fill;
+            }
+        }
+    }
+
+    .inset {
+        width: $inset;
+        height: $inset;
+        position: absolute;
+        margin-left: ($size - $inset)/2;
+        margin-top: ($size - $inset)/2;
+        background-color: #FFF;
+        border-radius: 50%;
+    }
+}
+
+

@@ -1,0 +1,33 @@
+.social-slideshow-container {
+
+    .social-icon.radial-swoop {
+        margin: 0 auto 40px;
+    }
+
+    .slick-slider {
+        text-align: center;
+
+        .slick-slide {
+            @include align-items(center);
+            @include display(flex);
+            @include flex-direction(column);
+            @include justify-content(center);
+            @include flex-wrap(wrap);
+        }
+
+        .dashes-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -32px;
+        }
+    }
+
+    .social-content {
+        max-width: 254px;
+    }
+
+    .timestamp {
+        color: #BBBDBF;
+    }
+}
