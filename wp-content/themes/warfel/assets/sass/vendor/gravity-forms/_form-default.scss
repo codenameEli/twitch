@@ -1,3 +1,13 @@
+form {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 100px;
+
+	ul {
+		padding: 0;
+	}
+}
+
 label {
 	color: $input-label;
 	font-weight: 700;

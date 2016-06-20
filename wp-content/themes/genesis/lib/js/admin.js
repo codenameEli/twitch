@@ -291,9 +291,6 @@ window[ 'genesis' ] = {
 	ready: function() {
 		'use strict';
 
-		// Move all messages below our floated buttons
-		jQuery( 'h2' ).nextAll( 'div.updated, div.error' ).insertAfter( 'p.top-buttons' );
-
 		// Initialise category checklist toggle button
 		genesis.categoryChecklistToggleInit();
 

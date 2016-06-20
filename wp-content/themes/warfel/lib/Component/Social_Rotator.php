@@ -32,7 +32,7 @@ class Social_Rotator
     {
         $slick_params = json_encode( $this->args );
         ?>
-        <div class="social-rotator-container block">
+        <div class="social-rotator-container grid-loop-item">
             <div class="slick" data-slick=<?php echo $slick_params; ?>>
         <?php
     }

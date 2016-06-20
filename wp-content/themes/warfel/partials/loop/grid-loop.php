@@ -2,18 +2,19 @@
 use Tower\Component\Repeatable_Block as Repeatable_Block;
 use Tower\Component\Social_Rotator as Social_Rotator;
 
+global $post;
+
 $repeater_groups = get_field( 'repeatable_blocks_content' );
-?>
-<section class="grid-loop-container">
-<?php
+
 if ( $wp_query->have_posts() ):
     while ( $wp_query->have_posts() ): the_post();
-        if ( $wp_query->current_post === 0 ) { // is the first post
+        if ( is_tax('project_type') ):
             get_template_part( 'partials/loop/featured-grid-item' );
-        }
-        else {
-            get_template_part( 'partials/loop/grid-item' );
-        }
+        elseif ( get_post_type() === 'location' ):
+            get_template_part( 'partials/loop/grid-loop-item-location' );
+        else:
+            get_template_part( 'partials/loop/grid-loop-item-image' );
+        endif;
     endwhile;
 endif;
 wp_reset_postdata();
@@ -31,5 +32,3 @@ if ( !empty( $repeater_groups ) ):
 
     endforeach;
 endif;
-?>
-</section>

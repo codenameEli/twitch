@@ -1,69 +1,155 @@
-.grid-loop-item {
-    width: 33%;
-    display: block;
-    margin: 0;
-    float: left;
-    height: 446px;
-    position: relative;
-    &:nth-child(3n+3) {
-        clear: right;
+.grid-loop-container {
+    @include align-items(flex-start);
+    @include display(flex);
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+    &.fixed-width {
+        max-width: 1100px;
+        @include justify-content(center);
+        @include align-items(center);
     }
-    &:hover {
 
-        .item-title {
-            @include show-content;
+    .grid-loop-item {
+        @include align-items(center);
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(center);
+        width: 33%;
+        display: block;
+        margin: 0;
+        float: left;
+        height: 446px;
+        position: relative;
+        &:nth-child(3n+3) {
+            clear: right;
         }
     }
 
-    img {
-        height: 100%;
-        width: 100%;
+    .grid-loop-item-text {
+        float: left;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 293px;
     }
 
-    .item-title {
-        @include hide-content;
-        @include general-transition;
-        margin: 0;
-        &:after {
-            content: "";
-            background: #000;
-            opacity: 0.65;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 0;
+    .grid-loop-item-location {
+        &:hover {
+            .fill,
+            .half {
+                transform: rotate(180deg);
+            }
+        }
+
+        h2 {
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+
+        address {
+            max-width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .phone-number {
+            color: $primaryColor;
+            font-weight: bold;
         }
 
         a {
-            font-family: $primaryFont;
-            font-weight: 400;
-            z-index: 3;
-            color: #FFF;
-            text-transform: uppercase;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 2;
+            @include hide-text();
+        }
+    }
+
+    .grid-loop-item-image {
+        &:hover {
+
+            .item-title {
+                @include show-content;
+            }
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .item-title {
+            @include hide-content;
+            @include general-transition;
             margin: 0;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            &:hover {
-                text-decoration: none;
+            &:after {
+                content: "";
+                background: #000;
+                opacity: 0.65;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+            }
+
+            a {
+                font-family: $primaryFont;
+                font-weight: 400;
+                z-index: 3;
+                color: #FFF;
+                text-transform: uppercase;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .social-rotator-container {
+        display: flex;
+        align-items: center;
+        max-width: 33%;
+        justify-content: center;
+
+        .slick {
+            width: 100%;
+        }
+
+        .social-icon.radial-swoop {
+            &:first-child {
+                margin-left: auto;
             }
         }
     }
 }
 
-.grid-loop-container .block {
-    float: left;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.pattern-fill {
+
+    > * {
+        &:nth-child(1n) {
+            background-color: #E6E7E8;
+        }
+        &:nth-child(2n) {
+            background-color: #FFF;
+        }
+        &:nth-child(3n) {
+            background-color: #F1F1F2;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-<div class="grid-loop-item">
+<div class="grid-loop-item grid-loop-item-image">
     <?php echo get_the_post_thumbnail(); ?>
     <h2 class="item-title">
         <a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a>

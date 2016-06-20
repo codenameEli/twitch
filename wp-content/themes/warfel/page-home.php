@@ -26,7 +26,6 @@ function tower_do_hero_slideshow()
 function tower_do_cta_slideshows()
 {
     $repeater_groups = get_field( 'cta_slideshow_content' );
-
     ?>
     <section class="cta-section">
     <?php
@@ -52,7 +51,7 @@ function tower_do_repeatable_blocks()
 {
     $repeater_groups = get_field( 'repeatable_blocks_content' );
     ?>
-    <section class="repeatable-blocks-section">
+    <section class="grid-loop-container grid-pattern-fill">
         <?php
 
         foreach ($repeater_groups as $repeater_group) {

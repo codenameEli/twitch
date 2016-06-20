@@ -24,6 +24,6 @@ function tower_do_services_loop()
     );
     $wp_query = new WP_Query($args);
 
-    get_template_part( 'partials/grid-loop' );
+    get_template_part( 'partials/loop/grid-loop' );
 }
 genesis();

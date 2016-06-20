@@ -17,7 +17,7 @@ $form-muted:    #858585;
 $form-font-size:   14px;
 $form-text-transform: uppercase;
 $form-line-height: $form-font-size * 1.5;
-$form-space:       $form-line-height / 2;
+$form-space: em(10px);
 
 $white: #fff;
 $gray:  #aaa;

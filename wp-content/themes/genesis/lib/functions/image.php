@@ -89,19 +89,25 @@ function genesis_get_image( $args = array() ) {
 	if ( false !== $pre )
 		return $pre;
 
-	//* Check for post image (native WP)
+	//* If post thumbnail (native WP) exists, use its id
 	if ( has_post_thumbnail( $args['post_id'] ) && ( 0 === $args['num'] ) ) {
 		$id = get_post_thumbnail_id( $args['post_id'] );
-		$html = wp_get_attachment_image( $id, $args['size'], false, $args['attr'] );
-		list( $url ) = wp_get_attachment_image_src( $id, $args['size'], false, $args['attr'] );
 	}
-	//* Else if first-attached, pull the first (default) image attachment
+	//* Else if the first (default) image attachment is the fallback, use its id
 	elseif ( 'first-attached' === $args['fallback'] ) {
 		$id = genesis_get_image_id( $args['num'], $args['post_id'] );
+	}
+	//* Else if fallback id is supplied, use it
+	elseif ( is_int( $args['fallback'] ) ) {
+		$id = $args['fallback'];
+	}
+
+	//* If we have an id, get the html and url
+	if ( isset( $id ) ) {
 		$html = wp_get_attachment_image( $id, $args['size'], false, $args['attr'] );
 		list( $url ) = wp_get_attachment_image_src( $id, $args['size'], false, $args['attr'] );
 	}
-	//* Else if fallback array exists
+	//* Else if fallback html and url exist, use them
 	elseif ( is_array( $args['fallback'] ) ) {
 		$id   = 0;
 		$html = $args['fallback']['html'];
@@ -196,25 +202,31 @@ function genesis_get_additional_image_sizes() {
  */
 function genesis_get_image_sizes() {
 
-	$builtin_sizes = array(
-		'large'		=> array(
-			'width'  => get_option( 'large_size_w' ),
-			'height' => get_option( 'large_size_h' ),
-		),
-		'medium'	=> array(
-			'width'  => get_option( 'medium_size_w' ),
-			'height' => get_option( 'medium_size_h' ),
-		),
-		'thumbnail'	=> array(
-			'width'  => get_option( 'thumbnail_size_w' ),
-			'height' => get_option( 'thumbnail_size_h' ),
-			'crop'   => get_option( 'thumbnail_crop' ),
-		),
-	);
+	global $_wp_additional_image_sizes;
 
-	$additional_sizes = genesis_get_additional_image_sizes();
+	$sizes = array();
 
-	return array_merge( $builtin_sizes, $additional_sizes );
+	foreach ( get_intermediate_image_sizes() as $_size ) {
+
+		if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
+
+			$sizes[ $_size ]['width']  = get_option( "{$_size}_size_w" );
+			$sizes[ $_size ]['height'] = get_option( "{$_size}_size_h" );
+			$sizes[ $_size ]['crop']   = (bool) get_option( "{$_size}_crop" );
+
+		} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
+
+			$sizes[ $_size ] = array(
+				'width'  => $_wp_additional_image_sizes[ $_size ]['width'],
+				'height' => $_wp_additional_image_sizes[ $_size ]['height'],
+				'crop'   => $_wp_additional_image_sizes[ $_size ]['crop'],
+			);
+
+		}
+
+	}
+
+	return $sizes;
 
 }
 

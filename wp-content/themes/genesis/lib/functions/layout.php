@@ -298,6 +298,27 @@ function genesis_get_default_layout() {
 }
 
 /**
+ * Determine if the site has more than 1 registered layouts.
+ *
+ * @since 2.3.0
+ *
+ * @uses genesis_get_layouts()
+ *
+ * @return bool True if more than 1 layout, false otherwise.
+ */
+function genesis_has_multiple_layouts() {
+
+	$layouts = genesis_get_layouts();
+
+	if ( count( $layouts ) < 2 ) {
+		return false;
+	}
+
+	return true;
+
+}
+
+/**
  * Return the site layout for different contexts.
  *
  * Checks both the custom field and the theme option to find the user-selected site layout, and returns it.
@@ -338,17 +359,20 @@ function genesis_site_layout( $use_cache = true ) {
 
 	global $wp_query;
 
-	//* If viewing a singular page or post
-	if ( is_singular() ) {
-		$custom_field = genesis_get_custom_field( '_genesis_layout' );
+	//* If viewing a singular page or post, or the posts page, but not the front page
+	if ( is_singular() || ( is_home() && ! genesis_is_root_page() ) ) {
+		$post_id      = is_home() ? get_option( 'page_for_posts' ) : null;
+		$custom_field = genesis_get_custom_field( '_genesis_layout', $post_id );
 		$site_layout  = $custom_field ? $custom_field : genesis_get_option( 'site_layout' );
 	}
 
 	//* If viewing a taxonomy archive
 	elseif ( is_category() || is_tag() || is_tax() ) {
-		$term = $wp_query->get_queried_object();
 
-		$site_layout = $term && isset( $term->meta['layout'] ) && $term->meta['layout'] ? $term->meta['layout'] : genesis_get_option( 'site_layout' );
+		$term        = $wp_query->get_queried_object();
+		$term_layout = $term ? get_term_meta( $term->term_id, 'layout', true) : '';
+		$site_layout = $term_layout ? $term_layout : genesis_get_option( 'site_layout' );
+
 	}
 
 	//* If viewing a supported post type
@@ -424,7 +448,7 @@ function genesis_layout_selector( $args = array() ) {
 		$class = $id == $args['selected'] ? ' selected' : '';
 
 		$output .= sprintf(
-			'<label class="box%2$s"><img src="%3$s" alt="%1$s" /><br /> <input type="radio" name="%4$s" id="%5$s" value="%5$s" %6$s /></label>',
+			'<label class="box%2$s" for="%5$s"><span class="screen-reader-text">%1$s </span><img src="%3$s" alt="%1$s" /><input type="radio" name="%4$s" id="%5$s" value="%5$s" %6$s class="screen-reader-text" /></label>',
 			esc_attr( $data['label'] ),
 			esc_attr( $class ),
 			esc_url( $data['img'] ),

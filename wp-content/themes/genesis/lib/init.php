@@ -53,21 +53,56 @@ function genesis_theme_support() {
 	add_theme_support( 'genesis-breadcrumbs' );
 
 	//* Maybe add support for Genesis menus
-	if ( ! current_theme_supports( 'genesis-menus' ) )
-		add_theme_support( 'genesis-menus', array(
+	if ( ! current_theme_supports( 'genesis-menus' ) ) {
+
+		$menus = array(
 			'primary'   => __( 'Primary Navigation Menu', 'genesis' ),
 			'secondary' => __( 'Secondary Navigation Menu', 'genesis' ),
-		) );
+		);
+
+		/**
+		 * Filter for the menus that Genesis supports by default.
+		 *
+		 * @since 2.3.0
+		 *
+		 * @param array $menus The array of supported menus.
+		 */
+		$menus = apply_filters( 'genesis_theme_support_menus', $menus );
+
+		add_theme_support( 'genesis-menus', $menus );
+
+	}
 
 	//* Maybe add support for structural wraps
-	if ( ! current_theme_supports( 'genesis-structural-wraps' ) )
-		add_theme_support( 'genesis-structural-wraps', array( 'header', 'menu-primary', 'menu-secondary', 'footer-widgets', 'footer' ) );
+	if ( ! current_theme_supports( 'genesis-structural-wraps' ) ) {
 
-	//* Turn on HTML5, responsive viewport & footer widgets if Genesis is active
+		$structural_wraps = array( 'header', 'menu-primary', 'menu-secondary', 'footer-widgets', 'footer' );
+
+		/**
+		 * Filter for the structural wraps that Genesis supports by default.
+		 *
+		 * @since 2.3.0
+		 *
+		 * @param array $structural_wraps The array of supported menus.
+		 */
+		$structural_wraps = apply_filters( 'genesis_theme_support_structural_wraps', $structural_wraps );
+
+		add_theme_support( 'genesis-structural-wraps', $structural_wraps );
+
+	}
+
+	//* Turn on HTML5 and responsive viewport if Genesis is active
 	if ( ! is_child_theme() ) {
 		add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'  ) );
 		add_theme_support( 'genesis-responsive-viewport' );
-		add_theme_support( 'genesis-footer-widgets', 3 );
+		add_theme_support( 'genesis-accessibility', array(
+			'404-page',
+			'drop-down-menu',
+			'headings',
+			'rems',
+			'search-form',
+			'skip-links',
+		) );
 	}
 
 }
@@ -85,6 +120,30 @@ function genesis_post_type_support() {
 
 }
 
+add_action( 'init', 'genesis_post_type_support_post_meta', 11 );
+/**
+ * Add post type support for post meta to all post types except page.
+ *
+ * @since 2.2.0
+ */
+function genesis_post_type_support_post_meta() {
+
+	$public_post_types = get_post_types( array( 'public' => true ) );
+
+	foreach ( $public_post_types as $post_type ) {
+		if ( 'page' !== $post_type ) {
+			add_post_type_support( $post_type, 'genesis-entry-meta-before-content' );
+			add_post_type_support( $post_type, 'genesis-entry-meta-after-content' );
+		}
+	}
+
+	//* For backward compatibility
+	if ( current_theme_supports( 'genesis-after-entry-widget-area' ) ) {
+		add_post_type_support( 'post', 'genesis-after-entry-widget-area' );
+	}
+
+}
+
 add_action( 'genesis_init', 'genesis_constants' );
 /**
  * This function defines the Genesis theme constants
@@ -95,10 +154,10 @@ function genesis_constants() {
 
 	//* Define Theme Info Constants
 	define( 'PARENT_THEME_NAME', 'Genesis' );
-	define( 'PARENT_THEME_VERSION', '2.1.2' );
-	define( 'PARENT_THEME_BRANCH', '2.1' );
-	define( 'PARENT_DB_VERSION', '2104' );
-	define( 'PARENT_THEME_RELEASE_DATE', date_i18n( 'F j, Y', '1405418400' ) );
+	define( 'PARENT_THEME_VERSION', '2.3.0' );
+	define( 'PARENT_THEME_BRANCH', '2.3' );
+	define( 'PARENT_DB_VERSION', '2301' );
+	define( 'PARENT_THEME_RELEASE_DATE', date_i18n( 'F j, Y', '1465948800' ) );
 #	define( 'PARENT_THEME_RELEASE_DATE', 'TBD' );
 
 	//* Define Directory Location Constants
@@ -161,7 +220,7 @@ function genesis_load_framework() {
 	do_action( 'genesis_pre_framework' );
 
 	//* Short circuit, if necessary
-	if ( defined( 'GENESIS_LOAD_FRAMEWORK' ) && GENESIS_LOAD_FRAMEWORK === false )
+	if ( defined( 'GENESIS_LOAD_FRAMEWORK' ) && false === GENESIS_LOAD_FRAMEWORK )
 		return;
 
 	//* Load Framework
@@ -186,6 +245,7 @@ function genesis_load_framework() {
 	require_once( GENESIS_FUNCTIONS_DIR . '/seo.php' );
 	require_once( GENESIS_FUNCTIONS_DIR . '/widgetize.php' );
 	require_once( GENESIS_FUNCTIONS_DIR . '/feed.php' );
+	require_once( GENESIS_FUNCTIONS_DIR . '/toolbar.php' );
 	if ( apply_filters( 'genesis_load_deprecated', true ) )
 		require_once( GENESIS_FUNCTIONS_DIR . '/deprecated.php' );
 
@@ -213,6 +273,7 @@ function genesis_load_framework() {
 	require_once( GENESIS_ADMIN_DIR . '/cpt-archive-settings.php' );
 	require_once( GENESIS_ADMIN_DIR . '/import-export.php' );
 	require_once( GENESIS_ADMIN_DIR . '/inpost-metaboxes.php' );
+	require_once( GENESIS_ADMIN_DIR . '/use-child-theme.php' );
 	require_once( GENESIS_ADMIN_DIR . '/whats-new.php' );
 	endif;
 	require_once( GENESIS_ADMIN_DIR . '/customizer.php' );
@@ -227,6 +288,11 @@ function genesis_load_framework() {
 
 	//* Load Widgets
 	require_once( GENESIS_WIDGETS_DIR . '/widgets.php' );
+
+	//* Load CLI command
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    	include GENESIS_CLASSES_DIR . '/cli.php';
+	}
 
 	global $_genesis_formatting_allowedtags;
 	$_genesis_formatting_allowedtags = genesis_formatting_allowedtags();

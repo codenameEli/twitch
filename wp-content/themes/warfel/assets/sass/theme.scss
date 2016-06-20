@@ -13,12 +13,14 @@
 // Globals
 @import "includes/variables";
 @import "includes/mixins";
-@import "includes/globals";
-@import "includes/images";
 
 // Placeholders
 @import "includes/placeholders/two-thirds-slideshow";
 @import "includes/placeholders/dashes";
+@import "includes/placeholders/two-column-list";
+
+@import "includes/globals";
+@import "includes/images";
 
 // Components
 @import "includes/components/radial-swoop";
@@ -46,3 +48,4 @@
 @import "includes/archive";
 @import "includes/single";
 @import "includes/page-home";
+@import "includes/page-contact";

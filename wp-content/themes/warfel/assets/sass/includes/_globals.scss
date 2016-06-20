@@ -84,8 +84,12 @@ strong {
 	font-family: $primaryFont;
 }
 
-article > ul {
-	@include side-by-side-lists;
+.entry-content > ul {
+	@extend %two-column-list;
+}
+
+.site-inner {
+	text-align: center;
 }
 
 section {

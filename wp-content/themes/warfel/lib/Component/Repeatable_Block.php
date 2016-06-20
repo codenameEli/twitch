@@ -17,7 +17,7 @@ class Repeatable_Block
         $button_text = $this->repeater_group['repeatable_blocks_content_button_text'];
         $button_link = $this->repeater_group['repeatable_blocks_content_button_link'];
         ?>
-        <div class="flex-block block">
+        <div class="grid-loop-item grid-loop-item-text flex-block block">
             <p><?php echo $text; ?></p>
             <a href="<?php echo $button_link; ?>" class="underline-button">
                 <?php echo $button_text; ?>

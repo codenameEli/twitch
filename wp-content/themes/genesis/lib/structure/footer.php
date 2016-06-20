@@ -51,26 +51,29 @@ function genesis_footer_widget_areas() {
 		dynamic_sidebar( 'footer-' . $counter );
 		$widgets = ob_get_clean();
 
-		$inside .= sprintf( '<div class="footer-widgets-%d widget-area">%s</div>', $counter, $widgets );
+		if ( $widgets ) {
+			$inside .= sprintf( '<div class="footer-widgets-%d widget-area">%s</div>', $counter, $widgets );
+		}
 
 		$counter++;
 
 	}
 
 	if ( $inside ) {
-	
+
 		$output .= genesis_markup( array(
-			'html5'   => '<div %s>',
+			'html5'   => '<div %s>' . genesis_sidebar_title( 'Footer' ),
 			'xhtml'   => '<div id="footer-widgets" class="footer-widgets">',
 			'context' => 'footer-widgets',
+			'echo'    => false,
 		) );
-	
+
 		$output .= genesis_structural_wrap( 'footer-widgets', 'open', 0 );
-		
+
 		$output .= $inside;
-		
+
 		$output .= genesis_structural_wrap( 'footer-widgets', 'close', 0 );
-		
+
 		$output .= '</div>';
 
 	}

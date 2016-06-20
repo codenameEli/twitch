@@ -63,45 +63,56 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 		<div class="about-text"><?php printf( __( 'Congratulations! You\'re now running Genesis %s.', 'genesis' ), PARENT_THEME_BRANCH ); ?></div>
 
 		<div class="changelog">
-			<h3><?php _e( 'What&#8217;s New', 'genesis' ); ?></h3>
+			<h2><?php _e( 'What&#8217;s New', 'genesis' ); ?></h2>
 			<div class="feature-section">
 
-				<h4><?php _e( 'Customizer', 'genesis' ); ?></h4>
-				<p><?php _e( 'Many of the settings you would normally find on the theme settings page can now also be found in the customizer. So, you can now adjust things like the layout, breadcrumbs, and the way your content archives, and watch the changes happen in real time.', 'genesis' ); ?></p>
+			<p><?php _e( 'Occasionally, even the most mature software needs a little freshening up. Instead of focusing on big new features and large changes, we opted to go through the backlog of bug reports and enhancement suggestions. The result is a much more polished and stable Genesis Framework. Have a look at what has changed in 2.3.' , 'genesis' ); ?></p>
 
-				<h4><?php _e( 'Removing Features', 'genesis' ); ?></h4>
-				<p><?php printf( __( 'For users installing Genesis for the first time on a site, we have disabled the "Primary Navigation Extras" setting. If you would like to add custom links like Twitter or RSS, just use a custom menu item and give it a CSS class of <code>right</code> and it will float right. If you wish to display the date or a search form in the navigation menu, <a href="%s" target="_blank">follow this tutorial</a>.', 'genesis' ), 'http://my.studiopress.com/snippets/nav-extras' ); ?></p>
+				<h3><?php _e( 'New and Improved', 'genesis' ); ?></h3>
 
-				<h4><?php _e( 'Boring, but important', 'genesis' ); ?></h4>
-				<p><?php _e( 'We\'re always improving. Call it a sickness, but we like to make things work really, really well. Here\'s a list of the technical changes in this latest release.', 'genesis' ); ?></p>
+					<ul>
+						<li><?php _e( 'A CHANGELOG.md file for the project. (yay!)' , 'genesis' ); ?></li>
+						<li><?php _e( 'Update to normalize.css 4.1.1.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Update our theme tags in style.css.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Improve the look of the settings screens.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Pass entry image link through the markup API.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Add a toolbar link to CPT archive settings when viewing a CPT archive.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Add shortcodes for site title and home link.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Enable after entry widget area for all post types via post type support.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Hide layout selector when only one layout is supported.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Use TinyMCE (visual editor) for archive intro text input.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Allow foreign language characters in content limit functions.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Add accessibility to the paginated post navigation.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Allow adjacent single entry navigation via post type support.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Added relative_depth parameter to date shortcodes.' , 'genesis' ); ?></li>
+					</ul>
 
+
+				<h3><?php _e( 'Bug Fixes', 'genesis' ); ?></h3>
 				<p>
 					<ul>
-						<li><?php _e( 'Support Feedblitz as a feed redirection option.', 'genesis' ); ?></li>
-						<li><?php _e( 'Prevent unnecessary calls to update server.', 'genesis' ); ?></li>
-						<li><?php _e( 'Fixed a breadcrumb compatibility issue with WordPress SEO.', 'genesis' ); ?></li>
-						<li><?php _e( 'Fixed IE11 bug in layout selector.', 'genesis' ); ?></li>
-						<li><?php _e( 'Added support for RTL in the dashboard for Genesis elements.', 'genesis' ); ?></li>
-						<li><?php _e( 'Many other improvements and bug fixes.', 'genesis' ); ?></li>
+						<li><?php _e( 'Use correct class for superfish hover state.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Prevent empty footer widgets markup.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Prevent empty spaces in entry footer of CPTs.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Prevent author shortcode from outputting empty markup when no author is assigned.' , 'genesis' ); ?></li>
+						<li><?php _e( "Disable author box on entries where post type doesn't support author." , 'genesis' ); ?></li>
+						<li><?php _e( 'Disable author shortcode output if author is not supported by post type.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Fix issue with no sitemap when running html5 and no a11y support for 404 page.' , 'genesis' ); ?></li>
+						<li><?php _e( 'Exclude posts page from page selection dropdown in Featured Page widget.' , 'genesis' ); ?></li>
 					</ul>
-				<p>
+				</p>
 
 				</div>
 		</div>
 
 		<div class="project-leads">
 
-			<h3><?php _e( 'Project Leads', 'genesis' ); ?></h3>
+			<h2><?php _e( 'Project Leads', 'genesis' ); ?></h2>
 
 			<ul class="wp-people-group " id="wp-people-group-project-leaders">
 			<li class="wp-person">
 				<a href="http://twitter.com/nathanrice"><img src="//0.gravatar.com/avatar/fdbd4b13e3bcccb8b48cc18f846efb7f?s=120" class="gravatar" alt="Nathan Rice" /></a>
 				<a class="web" href="http://twitter.com/nathanrice">Nathan Rice</a>
-				<span class="title"><?php _e( 'Lead Developer', 'genesis' ); ?></span>
-			</li>
-			<li class="wp-person">
-				<a href="http://twitter.com/sillygrampy"><img src="//0.gravatar.com/avatar/7b8ff059b9a4504dfbaebd4dd190466e?s=120" class="gravatar" alt="Ron Rennick" /></a>
-				<a class="web" href="http://twitter.com/sillygrampy">Ron Rennick</a>
 				<span class="title"><?php _e( 'Lead Developer', 'genesis' ); ?></span>
 			</li>
 			<li class="wp-person">
@@ -115,7 +126,7 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 
 		<div class="contributors">
 
-			<h3><?php _e( 'Contributors', 'genesis' ); ?></h3>
+			<h2><?php _e( 'Contributors', 'genesis' ); ?></h2>
 
 			<ul class="wp-people-group" id="wp-people-group-contributing-developers">
 			<?php
@@ -136,7 +147,11 @@ class Genesis_Admin_Upgraded extends Genesis_Admin_Basic {
 
 		<div class="return-to-dashboard">
 			<p><a href="<?php echo esc_url( menu_page_url( 'genesis', 0 ) ); ?>"><?php _e( 'Go to Theme Settings &rarr;', 'genesis' ); ?></a></p>
-			<p><a href="<?php echo esc_url( menu_page_url( 'seo-settings', 0 ) ); ?>"><?php _e( 'Go to SEO Settings &rarr;', 'genesis' ); ?></a></p>
+			<?php
+			if ( ! genesis_seo_disabled() ):
+				?><p><a href="<?php echo esc_url( menu_page_url( 'seo-settings', 0 ) ); ?>"><?php _e( 'Go to SEO Settings &rarr;', 'genesis' ); ?></a></p><?php
+			endif; ?>
+
 		</div>
 
 		</div>

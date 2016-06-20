@@ -27,3 +27,47 @@
         }
     }
 }
+
+.project-pagination {
+    text-transform: uppercase;
+    @include display(flex);
+    @include flex-direction(row);
+    @include justify-content(center);
+    
+    span {
+        text-transform: capitalize;
+        display: block;
+        color: #404041;
+        font-size: em(17px);
+    }
+
+    a {
+        color: #A6A8AB;
+        position: relative;
+        &:before {
+            display: block;
+            position: absolute;
+            top: -4px;
+            font-size: em(20px);
+        }
+    }
+    
+    .prev-link {
+        text-align: right;
+
+        a:before {
+            content: "\003c";
+            left: -20px;
+        }
+    }
+    
+    .next-link {
+        text-align: left;
+        margin-left: 75px;
+
+        a:before {
+            content: "\003e";
+            right: -20px;
+        }
+    }
+}

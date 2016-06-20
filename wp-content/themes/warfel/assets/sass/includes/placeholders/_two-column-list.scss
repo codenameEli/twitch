@@ -1,0 +1,23 @@
+%two-column-list {
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+    li {
+        width: 270px;
+        display: block;
+        text-align: left;
+        &:nth-of-type(odd) {
+            float: left;
+            clear: left;
+        }
+        &:nth-of-type(even) {
+            float: left;
+            margin: 0 0 0 50px;
+        }
+        &:last-of-type {
+            + * {
+                clear: both;
+            }
+        }
+    }
+}
