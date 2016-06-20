@@ -1,0 +1,42 @@
+%two-thirds-slideshow {
+    min-height: 1px;
+    &:nth-child(odd) {
+        .slick {
+            float: left;
+        }
+        .slideshow-content {
+            float: right;
+        }
+    }
+    &:nth-child(even) {
+        .slick {
+            float: right;
+        }
+        .slideshow-content {
+            float: left;
+        }
+    }
+
+    .slick {
+        width: 70%;
+        height: 446px;
+    }
+
+    img.slick-slide {
+        height: 446px;
+    }
+
+    .slideshow-content {
+        @include align-items(center);
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(center);
+        width: 30%;
+        height: 446px;
+        text-align: center;
+    }
+
+    .dots-container .slick-dots {
+        position: relative;
+    }
+}

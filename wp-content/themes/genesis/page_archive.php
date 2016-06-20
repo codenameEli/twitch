@@ -39,6 +39,7 @@ function genesis_page_archive_content() { ?>
 
 	<h4><?php _e( 'Authors:', 'genesis' ); ?></h4>
 	<ul>
+		
 		<?php wp_list_authors( 'exclude_admin=0&optioncount=1' ); ?>
 	</ul>
 

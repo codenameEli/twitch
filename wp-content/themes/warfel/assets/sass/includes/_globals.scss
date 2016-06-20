@@ -5,7 +5,7 @@
 
 @include placeholder {
 	color: #A6A8AB;
-    font-weight: 300;
+    font-weight: lighter;
 }
 
 input,
@@ -19,8 +19,10 @@ textarea {
 body {
 	color: #808184;
 	font-size: $em-base;
-	font-family: $fontFamily;
-	font-weight: 300;
+	font-family: $primaryFont;
+	font-weight: lighter;
+	line-height: em(23px);
+	letter-spacing: em(1px);
 	margin: 0;
 }
 
@@ -30,13 +32,13 @@ h3,
 h4,
 h5,
 h6 {
-  	font-family: $fontFamily;
+  	font-family: $primaryFont;
 }
 
 h1 {
 	font-size: em(26px);
 	color: $primaryColor;
-	font-weight: 300;
+	font-weight: lighter;
 	text-transform: uppercase;
 }
 
@@ -47,7 +49,7 @@ h2 {
 
 h3 {
 	font-size: em(14px);
-	font-weight: 300;
+	font-weight: lighter;
 	color: $primaryColor;
 }
 
@@ -79,7 +81,7 @@ a {
 
 b,
 strong {
-	font-family: $fontFamily;
+	font-family: $primaryFont;
 }
 
 article > ul {
@@ -87,5 +89,5 @@ article > ul {
 }
 
 section {
-	@include outer-container();
+	@include outer-container(100%);
 }

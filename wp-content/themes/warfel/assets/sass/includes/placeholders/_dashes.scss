@@ -1,0 +1,46 @@
+%dashes {
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    li {
+        margin: 0 5px;
+        padding: 0 4px 6px;
+        list-style-type: none;
+        position: relative;
+        &:hover {
+            &:after {
+                background-color: $primaryColor;
+            }
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background-color: #808184;
+            bottom: 0;
+            left: 0;
+        }
+        &:first-of-type {
+            margin-left: 0;
+        }
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+%dashes-active {
+    &:hover {
+        &:after {
+            background-color: darken( $primaryColor, 20% );
+        }
+    }
+    &:after {
+        background-color: $primaryColor;
+    }
+}

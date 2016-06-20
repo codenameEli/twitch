@@ -1,0 +1,69 @@
+.grid-loop-item {
+    width: 33%;
+    display: block;
+    margin: 0;
+    float: left;
+    height: 446px;
+    position: relative;
+    &:nth-child(3n+3) {
+        clear: right;
+    }
+    &:hover {
+
+        .item-title {
+            @include show-content;
+        }
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .item-title {
+        @include hide-content;
+        @include general-transition;
+        margin: 0;
+        &:after {
+            content: "";
+            background: #000;
+            opacity: 0.65;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+
+        a {
+            font-family: $primaryFont;
+            font-weight: 400;
+            z-index: 3;
+            color: #FFF;
+            text-transform: uppercase;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.grid-loop-container .block {
+    float: left;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

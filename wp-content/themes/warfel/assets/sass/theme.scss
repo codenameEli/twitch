@@ -16,15 +16,21 @@
 @import "includes/globals";
 @import "includes/images";
 
+// Placeholders
+@import "includes/placeholders/two-thirds-slideshow";
+@import "includes/placeholders/dashes";
+
 // Components
 @import "includes/components/radial-swoop";
 @import "includes/components/hero-slideshow";
 @import "includes/components/cta-slideshow";
+@import "includes/components/featured-project-slideshow";
 @import "includes/components/repeatable-blocks";
 @import "includes/components/social-rotator";
 @import "includes/buttons";
 @import "includes/icons";
 @import "includes/forms";
+@import "includes/pagination";
 
 // Slick
 @import "vendor/slick/slick";

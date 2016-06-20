@@ -91,7 +91,7 @@ class CPT_Project
             'label'                 => __( $singular, 'text_domain' ),
             'description'           => __( 'Post Type Description', 'text_domain' ),
             'labels'                => $labels,
-            'supports'              => array( 'title', 'editor' ),
+            'supports'              => array( 'title', 'editor', 'thumbnail' ),
             'taxonomies'            => array( 'project_type' ),
             'hierarchical'          => false,
             'public'                => true,

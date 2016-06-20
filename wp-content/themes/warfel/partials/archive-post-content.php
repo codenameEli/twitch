@@ -1,5 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+    <div class="featured-image">
+        <?php echo get_the_post_thumbnail(); ?>
+    </div>
     <header class="entry-header">
         <?php the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' ); ?>
     </header><!-- .entry-header -->

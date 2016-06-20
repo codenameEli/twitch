@@ -1,3 +1,3 @@
 <?php
 
-// add_image_size( 'tower-featured-image', 1701, 673 );
+add_image_size( 'tower-archive-featured-image', 446, 446 );

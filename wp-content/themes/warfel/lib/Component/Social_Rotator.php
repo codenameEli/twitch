@@ -4,7 +4,7 @@ namespace Tower\Component;
 
 class Social_Rotator
 {
-    public $args;
+    public $Id = 767;
 
     public function __construct()
     {
@@ -12,10 +12,7 @@ class Social_Rotator
             'autoplay' => false,
             'dots' => true,
             'arrows' => false,
-            'dotsClass' => 'dashes-container'
-//            'appendDots' => '#social-dashes'
-//        'vertical' => true,
-//        'verticalSwiping' => true
+            'appendDots' => '#dots-container-767'
         );
     }
 
@@ -35,7 +32,7 @@ class Social_Rotator
     {
         $slick_params = json_encode( $this->args );
         ?>
-        <div class="social-slideshow-container block">
+        <div class="social-rotator-container block">
             <div class="slick" data-slick=<?php echo $slick_params; ?>>
         <?php
     }
@@ -44,7 +41,7 @@ class Social_Rotator
     {
         ?>
             </div>
-            <div id="social-dashes" class="dashes-container"></div>
+            <div id="dots-container-<?php echo $this->Id; ?>" class="dashes-container"></div>
         </div>
         <?php
     }

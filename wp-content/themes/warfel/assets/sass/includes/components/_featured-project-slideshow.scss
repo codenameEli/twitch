@@ -1,0 +1,15 @@
+.grid-loop-item.featured-item {
+    width: 100%;
+}
+
+.featured-project-slideshow {
+    @extend %two-thirds-slideshow;
+    .slick,
+    .attachment-post-thumbnail {
+        width: 66%;
+    }
+
+    .slideshow-content {
+        width: 33%;
+    }
+}

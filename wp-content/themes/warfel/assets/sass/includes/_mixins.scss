@@ -26,3 +26,15 @@
         }
     }
 }
+
+@mixin hide-content()
+{
+    opacity: 0;
+    visibility: hidden;
+}
+
+@mixin show-content()
+{
+    opacity: 1;
+    visibility: visible;
+}

@@ -12,9 +12,6 @@ $slick-dot-radius: 11px;
         margin: 10px 5px;
         padding: 0;
         cursor: pointer;
-        &.slick-active button {
-            background: $primaryColor;
-        }
     }
 
     button {
@@ -50,13 +47,23 @@ $slick-dot-radius: 11px;
 }
 
 .dashes-container {
-    @extend .slick-dots;
-    button {
-        background: #F1F1F2;
-        height: 3px;
+    @extend %dashes;
+
+    li {
+        height: 15px;
         width: 15px;
-        padding: 0;
+    }
+
+    li.slick-active {
+        @extend  %dashes-active;
+    }
+    
+    button {
+        display: block;
+        height: 100%;
+        width: 100%;
         border: 0;
-        border-radius: 0;
+        padding: 0;
+        background: rgba(0, 0, 0, 0);
     }
 }

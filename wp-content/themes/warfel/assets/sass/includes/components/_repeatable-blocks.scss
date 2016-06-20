@@ -4,28 +4,28 @@
     @include flex-direction(row);
     @include justify-content(flex-start);
 
-    .block {
-        text-align: center;
-        width: 33%;
-        height: 446px;
-        margin: auto;
-        line-height: em(23px);
-        font-weight: 100;
-        &:nth-of-type(1n) {
-            background-color: #E6E7E8;
-        }
-        &:nth-of-type(2n) {
-            background-color: #FFF;
-        }
-        &:nth-of-type(3n) {
-            background-color: #F1F1F2;
-        }
-    }
-
     .flex-block {
         @include align-items(center);
         @include display(flex);
         @include flex-direction(column);
         @include justify-content(center);
+    }
+}
+
+.block {
+    text-align: center;
+    width: 33%;
+    height: 446px;
+    margin: auto;
+    line-height: em(23px);
+    font-weight: 100;
+    &:nth-of-type(1n) {
+        background-color: #E6E7E8;
+    }
+    &:nth-of-type(2n) {
+        background-color: #FFF;
+    }
+    &:nth-of-type(3n) {
+        background-color: #F1F1F2;
     }
 }

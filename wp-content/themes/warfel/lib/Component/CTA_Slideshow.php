@@ -47,7 +47,7 @@ class CTA_Slideshow
 
         ?>
             </div>
-            <div class="cta-slideshow-content">
+            <div class="slideshow-content">
                 <p><?php echo $text; ?></p>
                 <a href="<?php echo $button_link; ?>" class="grey-button">
                     <?php echo $button_text; ?>

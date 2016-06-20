@@ -1,0 +1,29 @@
+.pagination {
+    margin-top: 75px;
+    @extend %dashes;
+
+    li.active {
+        @extend %dashes-active;
+    }
+
+    a {
+        color: #A6A8AB;
+        display: inline-block;
+        padding: 0 4px 6px;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .pagination-previous,
+    .pagination-next {
+        &:after {
+            display: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: $primaryColor;
+        }
+    }
+}
