@@ -21,19 +21,16 @@ function tower_do_executive_team_loop()
 {
     global $wp_query;
     global $post;
-
+    ?>
+    <h1>Meet our executive team</h1>
+    <?php
     $args = array(
         'posts_per_page' => 9,
         'post_type' => 'executive',
         'paged' => get_query_var('page')
     );
     $wp_query = new WP_Query($args);
-    ?>
-    <section class="grid-loop-container fixed-width pattern-fill">
-        <?php
-        get_template_part('partials/loop/grid-loop');
-        ?>
-    </section>
-    <?php
+
+    get_template_part('partials/loop/grid-loop');
 }
 genesis();

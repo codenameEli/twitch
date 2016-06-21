@@ -30,5 +30,6 @@ function tower_do_projects_loop()
         ?>
     </section>
     <?php
+    genesis_posts_nav();
 }
 genesis();

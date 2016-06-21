@@ -3,7 +3,6 @@ use Tower\Component\Repeatable_Block as Repeatable_Block;
 use Tower\Component\Social_Rotator as Social_Rotator;
 
 global $post;
-
 $repeater_groups = get_field( 'repeatable_blocks_content' );
 
 if ( $wp_query->have_posts() ):
@@ -14,8 +13,10 @@ if ( $wp_query->have_posts() ):
             get_template_part( 'partials/loop/grid-loop-item-location' );
         elseif ( get_post_type() === 'executive' ):
             get_template_part( 'partials/loop/grid-loop-item-executive' );
-        else:
+        elseif ( get_post_type() === 'project' ):
             get_template_part( 'partials/loop/grid-loop-item-image' );
+        else:
+            get_template_part( 'partials/loop/grid-loop-item-default' );
         endif;
     endwhile;
 endif;

@@ -9,5 +9,5 @@ function tower_do_featured_image()
     if ( ! is_singular() ) { return; }
     if ( ! has_post_thumbnail() ) { return; }
 
-    the_post_thumbnail('tower-featured-image');
+    the_post_thumbnail( 'tower-featured-image' );
 }

@@ -1,0 +1,10 @@
+.share-this-article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .social-icon {
+        font-size: em(23px);
+        margin-left: 10px;
+    }
+}

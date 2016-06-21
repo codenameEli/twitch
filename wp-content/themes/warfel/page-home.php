@@ -51,7 +51,7 @@ function tower_do_repeatable_blocks()
 {
     $repeater_groups = get_field( 'repeatable_blocks_content' );
     ?>
-    <section class="grid-loop-container grid-pattern-fill">
+    <section class="grid-loop-container pattern-fill">
         <?php
 
         foreach ($repeater_groups as $repeater_group) {
