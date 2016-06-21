@@ -21,7 +21,12 @@ function tower_do_services_loop()
     );
     $terms = get_terms($args);
     $wp_query = new WP_Query;
-
-    get_template_part( 'partials/grid-loop' );
+    ?>
+    <section class="grid-loop-container">
+        <?php
+        get_template_part('partials/loop/grid-loop');
+        ?>
+    </section>
+    <?php
 }
 genesis();

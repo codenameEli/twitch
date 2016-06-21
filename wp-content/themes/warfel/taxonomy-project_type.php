@@ -6,8 +6,13 @@ add_action( 'genesis_loop', 'tower_do_projects_loop' );
 function tower_do_projects_loop()
 {
     global $wp_query;
-
-    get_template_part( 'partials/loop/grid-loop' );
+    ?>
+    <section class="grid-loop-container">
+        <?php
+        get_template_part('partials/loop/grid-loop');
+        ?>
+    </section>
+    <?php
     genesis_posts_nav();
 }
 genesis();

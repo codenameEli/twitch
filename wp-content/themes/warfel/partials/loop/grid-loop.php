@@ -8,10 +8,12 @@ $repeater_groups = get_field( 'repeatable_blocks_content' );
 
 if ( $wp_query->have_posts() ):
     while ( $wp_query->have_posts() ): the_post();
-        if ( is_tax('project_type') ):
+        if ( is_tax('project_type') && $wp_query->current_post === 0 ):
             get_template_part( 'partials/loop/featured-grid-item' );
         elseif ( get_post_type() === 'location' ):
             get_template_part( 'partials/loop/grid-loop-item-location' );
+        elseif ( get_post_type() === 'executive' ):
+            get_template_part( 'partials/loop/grid-loop-item-executive' );
         else:
             get_template_part( 'partials/loop/grid-loop-item-image' );
         endif;

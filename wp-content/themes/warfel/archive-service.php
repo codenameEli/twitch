@@ -23,7 +23,12 @@ function tower_do_services_loop()
         'paged' => get_query_var('page')
     );
     $wp_query = new WP_Query($args);
-
-    get_template_part( 'partials/loop/grid-loop' );
+    ?>
+    <section class="grid-loop-container">
+        <?php
+        get_template_part('partials/loop/grid-loop');
+        ?>
+    </section>
+    <?php
 }
 genesis();

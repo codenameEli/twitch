@@ -41,8 +41,13 @@ function tower_do_related_projects()
         'post__in' => $project_ids
     );
     $wp_query = new WP_Query($args);
-
-    get_template_part( 'partials/loop/grid-loop' );
+    ?>
+    <section class="grid-loop-container">
+        <?php
+        get_template_part('partials/loop/grid-loop');
+        ?>
+    </section>
+    <?php
 }
 
 genesis();
