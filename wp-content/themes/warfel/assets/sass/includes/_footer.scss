@@ -1,3 +1,41 @@
 footer {
+    color: #404041;
 
+    .footer-container-left {
+        float: left;
+    }
+
+    .footer-container-right {
+        float: right;
+    }
+
+    .menu {
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        li {
+            margin-right: 10px;
+            &:after {
+                content: "\2758";
+                color: $primaryColor;
+                margin-left: 10px;
+            }
+            &:last-child:after {
+                display: none;
+            }
+        }
+
+        a {
+            color: #404041;
+            font-size: em(13px);
+            font-weight: normal;
+        }
+    }
+
+    li {
+        list-style-type: none;
+    }
 }

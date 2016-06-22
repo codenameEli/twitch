@@ -17,7 +17,7 @@ if ( $wp_query->have_posts() ):
             get_template_part( 'partials/loop/grid-loop-item-executive' );
         elseif ( get_post_type() === 'affiliation' ):
             get_template_part( 'partials/loop/grid-loop-item-logo' );
-        elseif ( get_post_type() === 'project' ):
+        elseif ( get_post_type() === 'project' || is_post_type_archive('service') ):
             get_template_part( 'partials/loop/grid-loop-item-image' );
         else:
             get_template_part( 'partials/loop/grid-loop-item-default' );

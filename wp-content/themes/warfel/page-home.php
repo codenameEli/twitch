@@ -4,6 +4,11 @@ use Tower\Component\CTA_Slideshow as CTA_Slideshow;
 use Tower\Component\Repeatable_Block as Repeatable_Block;
 use Tower\Component\Social_Rotator as Social_Rotator;
 
+remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
+remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
+remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+
 add_action( 'genesis_before_content', 'tower_do_hero_slideshow' );
 add_action( 'genesis_before_content', 'tower_do_cta_slideshows' );
 add_action( 'genesis_before_content', 'tower_do_repeatable_blocks' );
