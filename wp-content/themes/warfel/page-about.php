@@ -25,9 +25,10 @@ function tower_do_executive_team_loop()
     <h1>Meet our executive team</h1>
     <?php
     $args = array(
-        'posts_per_page' => 9,
+        'posts_per_page' => -1,
         'post_type' => 'executive',
-        'paged' => get_query_var('page')
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
     );
     $wp_query = new WP_Query($args);
 
