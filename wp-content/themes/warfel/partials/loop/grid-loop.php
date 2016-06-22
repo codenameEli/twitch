@@ -11,8 +11,12 @@ if ( $wp_query->have_posts() ):
             get_template_part( 'partials/loop/featured-grid-item' );
         elseif ( get_post_type() === 'location' ):
             get_template_part( 'partials/loop/grid-loop-item-location' );
+        elseif ( get_post_type() === 'photographer' ):
+            get_template_part( 'partials/loop/grid-loop-item-photographer' );
         elseif ( get_post_type() === 'executive' ):
             get_template_part( 'partials/loop/grid-loop-item-executive' );
+        elseif ( get_post_type() === 'affiliation' ):
+            get_template_part( 'partials/loop/grid-loop-item-logo' );
         elseif ( get_post_type() === 'project' ):
             get_template_part( 'partials/loop/grid-loop-item-image' );
         else:
