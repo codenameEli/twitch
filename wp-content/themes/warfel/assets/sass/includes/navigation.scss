@@ -54,6 +54,7 @@ $submenu-max-height: 300px;
 
         // items
         .ubermenu-item-level-1 {
+            width: 25%;
             .ubermenu-target {
                 @include align-items(flex-start);
                 @include display(flex);
@@ -80,11 +81,15 @@ $submenu-max-height: 300px;
 
                 .ubermenu-target-title {
                     @include general-transition;
-                    padding: 36px 0;
                     background: #fff;
                     width: 100%;
                     border-right: .5px solid #E6E7E8;
+                    display: flex;
+                    align-items: center;
+                    height: 94px;
+                    justify-content: center;
                     text-align: center;
+                    padding: 0 15px;
                 }
             }
         }
