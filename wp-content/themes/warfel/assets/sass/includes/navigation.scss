@@ -1,5 +1,24 @@
 $submenu-max-height: 300px;
 
+.nav-primary {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background: #fff;
+    .admin-bar & {
+        top: 32px;
+    }
+}
+
+.nav-primary + * {
+    margin-top: 116px;
+    .admin-bar & {
+        top: 148px;
+    }
+}
+
 .ubermenu.ubermenu-loc-primary {
     display: flex!important;
     @include align-items(center);
