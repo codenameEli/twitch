@@ -14,4 +14,3 @@ $acf_id = 'user_' . $user_id;
     <i class="fa fa-linkedin"></i>
     <a href="<?php echo get_field( 'warfel_author_information_linkedin_url', $acf_id ); ?>" target="_blank">LinkedIn</a>
 </div>
-<?php
