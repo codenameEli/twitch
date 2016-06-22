@@ -1,8 +1,9 @@
-$slick-dot-radius: 11px;
+$slick-dot-radius: 12px;
 
 .slick-dots {
     width: auto;
     margin-left: 0;
+    margin-right: 35px;
     padding: 0;
     li {
         position: relative;
@@ -34,14 +35,22 @@ $slick-dot-radius: 11px;
 
     button {
         background: transparent;
-        height: 20px;
-        width: 20px;
+        height: $slick-dot-radius - 1;
+        width: $slick-dot-radius - 1;
         padding: 5px;
         border: 1px solid $primaryColor;
         border-radius: 50%;
         &:before,
         &:after {
             background: transparent;
+        }
+    }
+
+    li.slick-active {
+
+        button {
+            border: 0;
+            background: $primaryColor;
         }
     }
 }

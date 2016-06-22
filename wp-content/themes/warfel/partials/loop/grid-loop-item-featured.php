@@ -1,4 +1,4 @@
-<div class="grid-loop-item grid-loop-featured-item">
+<div class="grid-loop-item grid-loop-item-featured">
 <?php
 use Tower\Component\Featured_Project_Slideshow as Featured_Project_Slideshow;
 

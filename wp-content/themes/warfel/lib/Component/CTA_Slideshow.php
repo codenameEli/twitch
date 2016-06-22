@@ -1,5 +1,4 @@
 <?php
-
 namespace Tower\Component;
 
 class CTA_Slideshow
@@ -35,17 +34,23 @@ class CTA_Slideshow
         $slick_params = json_encode( $this->args );
         ?>
         <div id="cta-slideshow-<?php echo $this->Id; ?>" class="cta-slideshow-container">
-            <div class="slick" data-slick=<?php echo $slick_params; ?>>
+            <div class="slick-wrapper">
+                <div class="slick" data-slick=<?php echo $slick_params; ?>>
         <?php
     }
 
     public function after_slick_loop()
     {
         $text = $this->repeater_group['cta_slideshow_content_text'];
+        $hover_text = $this->repeater_group['cta_slideshow_content_hover_text'];
         $button_text = $this->repeater_group['cta_slideshow_content_button_text'];
         $button_link = $this->repeater_group['cta_slideshow_content_button_link'];
 
         ?>
+                </div>
+                <div class="slideshow-hover-content">
+                    <p class="hover-text"><?php echo $hover_text; ?></p>
+                </div>
             </div>
             <div class="slideshow-content">
                 <p><?php echo $text; ?></p>

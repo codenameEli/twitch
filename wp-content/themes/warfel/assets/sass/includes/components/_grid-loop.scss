@@ -241,6 +241,22 @@
         }
     }
 
+    .grid-loop-item-featured {
+        width: 100%;
+    }
+
+    .featured-project-slideshow {
+        @extend %two-thirds-slideshow;
+        .slick,
+        .attachment-post-thumbnail {
+            width: 66%;
+        }
+
+        .slideshow-content {
+            width: 33%;
+        }
+    }
+
     .grid-loop-item-default {
         position: relative;
         display: block;
