@@ -64,6 +64,32 @@ jQuery(document).ready(function($) {
     executiveBioAccordion.init();
 
 
+
+
+    var searchForm = {
+
+        init: function()
+        {
+            this.addEventListeners();
+        },
+
+        showSearchForm: function()
+        {
+            $('.search-form-container').addClass('active');
+        },
+
+        addEventListeners: function()
+        {
+            var self = this;
+
+            $('.search-form-container').on( 'click', '#openSearchForm', function() {
+                self.showSearchForm();
+            });
+        }
+    };
+    // searchForm.init();
+
+
 // // START UberMenu Force Open Menu Items for Styling
 //     var ubermenuOpenSubmenus = function() {
 //
