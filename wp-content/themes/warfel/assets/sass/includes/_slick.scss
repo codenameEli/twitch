@@ -76,3 +76,65 @@ $slick-dot-radius: 12px;
         background: rgba(0, 0, 0, 0);
     }
 }
+
+
+// Slick cube rotation
+
+.hero-slideshow-container {
+    .slick-list {
+        perspective: 1080px;
+        perspective-origin: 50% 50%;
+        height: 90vh !important;
+    }
+
+    .slick-track {
+        position: absolute;
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100% !important;
+        transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        transform: translateZ(-44vh) rotateX(0deg);
+        top: 0 !important;
+
+        .slick-slide {
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: 100% !important;
+            max-height: 100%;
+            backface-visibility: hidden;
+            visibility: hidden;
+            display: none;
+        }
+
+        .slick-slide.slick-cloned {
+            display: none;
+            visibility: hidden !important;
+        }
+
+
+        .cube-top {
+            transform: rotateX(90deg) translateZ(45vh) scaleX(1);
+            visibility: visible;
+            display: block;
+        }
+
+        .cube-front {
+            transform: rotateX(0deg) translateZ(45vh) scaleX(1);
+            visibility: visible;
+            display: block;
+        }
+
+        .cube-bottom {
+            transform: rotateX(-90deg) translateZ(45vh) translateX(0px) scaleX(1);
+            visibility: visible;
+            display: block;
+        }
+
+        .cube-back {
+            transform: rotateX(180deg) translateZ(45vh) translateX(0px) scaleX(1);
+            visibility: visible;
+            display: block;
+        }
+    }
+}

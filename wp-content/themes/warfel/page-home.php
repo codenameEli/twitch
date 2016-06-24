@@ -20,9 +20,13 @@ function tower_do_hero_slideshow()
         'autoplay' => false,
         'dots' => true,
         'arrows' => false,
-        'adaptiveHeight' => true
-//        'vertical' => true,
-//        'verticalSwiping' => true
+        'adaptiveHeight' => true,
+        'cssEase' => false,
+        'easing' => false,
+        'useCSS' => false,
+        'useTransform' => false,
+        'vertical' => true,
+        'verticalSwiping' => true
     );
     $hero_slideshow = new Hero_Slideshow( $gallery, $args );
 
