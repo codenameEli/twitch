@@ -1,0 +1,10 @@
+.dual-rotating-slideshow-container {
+    display: table;
+    width: 100%;
+
+    .slideshow {
+        width: 50%;
+        display: block;
+        float: left;
+    }
+}

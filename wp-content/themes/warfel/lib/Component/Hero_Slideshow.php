@@ -32,7 +32,7 @@ class Hero_Slideshow
     {
         $slick_params = json_encode( $this->args );
         ?>
-        <div class="hero-slideshow-container slick" data-slick=<?php echo $slick_params; ?>>
+        <div id="heroSlideshow" class="hero-slideshow-container slick slick-cube-rotator" data-slick=<?php echo $slick_params; ?>>
         <?php
     }
 
