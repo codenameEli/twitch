@@ -21,7 +21,7 @@ class Hero_Slideshow
 
         foreach ( $images as $image ) {
             ?>
-            <img src="<?php echo $image['url']; ?>"/>
+            <img src="<?php echo $image['sizes']['tower-hero-slideshow-image']; ?>"/>
             <?php
         }
 
