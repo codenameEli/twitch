@@ -18,6 +18,7 @@ function tower_do_hero_slideshow()
     $gallery = get_field( 'hero_slideshow_images' );
     $args = array(
         'autoplay' => true,
+        'autoplaySpeed' => 4500,
         'dots' => true,
         'arrows' => false,
         'adaptiveHeight' => true,
