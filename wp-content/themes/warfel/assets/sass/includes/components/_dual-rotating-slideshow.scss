@@ -1,7 +1,24 @@
 .dual-rotating-slideshow-container {
+    @extend .slick-circles;
     display: table;
     width: 100%;
     height: 326px;
+
+    .slick-dots {
+        @include align-items(center);
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(center);
+        position: absolute;
+        top: 100px;
+        left: 15px;
+        right: initial;
+        margin: 0;
+    }
+    .left-side-slideshow .slick-dots {
+        left: initial;
+        right: 15px;
+    }
 
     .slick-slider {
         width: 50%;
@@ -10,7 +27,7 @@
         float: left;
 
         .slick-list {
-            perspective: 1080px;
+            perspective: 5600px;
             perspective-origin: 50% 50%;
             height: 326px !important;
         }
@@ -27,25 +44,25 @@
             }
 
             .cube-top {
-                transform: rotateX(90deg) translateZ(159px) scaleX(1);
+                transform: rotateX(90deg) translateZ(163px) scaleX(1);
                 visibility: visible;
                 display: block;
             }
 
             .cube-front {
-                transform: rotateX(0deg) translateZ(166px) scaleX(1);
+                transform: rotateX(0deg) translateZ(163px) scaleX(1);
                 visibility: visible;
                 display: block;
             }
 
             .cube-bottom {
-                transform: rotateX(-90deg) translateZ(162px) translateX(0px) scaleX(1);
+                transform: rotateX(-90deg) translateZ(163px) translateX(0px) scaleX(1);
                 visibility: visible;
                 display: block;
             }
 
             .cube-back {
-                transform: rotateX(180deg) translateZ(146px) translateX(0px) scaleX(1);
+                transform: rotateX(180deg) translateZ(163px) translateX(0px) scaleX(1);
                 visibility: visible;
                 display: block;
             }

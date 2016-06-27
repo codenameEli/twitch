@@ -119,7 +119,10 @@ jQuery(document).ready(function($) {
                 $nextSlide.addClass('cube-bottom');
                 $lastSlide.addClass('cube-back');
 
-                slick.slickSetOption('speed', 1500, true);
+                slick.$slideTrack.css({
+                    transform: 'translateZ(' + self.translateZ + ') rotateX(' + self.degreesRotated + 'deg)'
+                });
+                // slick.slickSetOption('speed', 1500, true);
             },
 
             removeAllClasses: function () {
@@ -140,17 +143,23 @@ jQuery(document).ready(function($) {
                     if (currentSlide === nextSlide) {
                         return;
                     }
-                    if (currentSlide < nextSlide) {
+                    console.log('currentSlide', currentSlide);
+                    console.log('nextSlide', nextSlide);
+                    console.log('slick.slideCount', slick.slideCount);
+                    if (
+                        currentSlide === 0 && nextSlide === slick.slideCount-1 ||
+                        currentSlide > nextSlide
+                    ) {
+                        console.log("ROTATING BACKWARDS ON THE FIRST SLIDE", currentSlide, nextSlide,slick.slideCount);
+                        self.degreesRotated -= 90;
+                    }
+                    else if (
+                        // currentSlide < nextSlide && nextSlide !== slick.slideCount-1 ||
+                        currentSlide < nextSlide ||
+                        currentSlide === slick.slideCount-1
+                    ) {
                         console.log("ROTATING FORWARDS", currentSlide, nextSlide, self.degreesRotated);
                         self.degreesRotated += 90;
-                    }
-                    else if (currentSlide === slick.slideCount-1) {
-                        console.log("RESETING", currentSlide, nextSlide);
-                        self.degreesRotated += 90;
-                    }
-                    else if ( currentSlide > nextSlide && currentSlide !== slick.slideCount-1 ) {
-                        console.log("ROTATING BACKWARDS", currentSlide, nextSlide,slick.slideCount);
-                        self.degreesRotated -= 90;
                     }
 
                     slick.$slideTrack.css({
@@ -289,8 +298,8 @@ jQuery(document).ready(function($) {
             }
         }
     };
-    var leftSideSlideshow = new slickCubeRotator('#leftSideSlideshow', '-146px');
-    var rightSideSlideshow = new slickCubeRotator('#rightSideSlideshow', '-146px');
+    var leftSideSlideshow = new slickCubeRotator('#leftSideSlideshow', '-163px');
+    var rightSideSlideshow = new slickCubeRotator('#rightSideSlideshow', '-163px');
     var heroSlideshow = new slickCubeRotator('#heroSlideshow', '-44vh');
     leftSideSlideshow.init();
     rightSideSlideshow.init();

@@ -105,6 +105,9 @@ $slick-dot-radius: 12px;
             visibility: hidden;
             display: none;
             cursor: pointer;
+            &:focus {
+                outline: none;
+            }
         }
 
         .slick-slide.slick-cloned {
