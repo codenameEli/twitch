@@ -93,7 +93,6 @@ $slick-dot-radius: 12px;
         width: 100%;
         height: 100% !important;
         transition: transform 1.5s cubic-bezier(0.56, -0.32, 0.92, 0.62);
-        transform: translateZ(-44vh) rotateX(0deg);
         top: 0 !important;
 
         .slick-slide {
@@ -105,6 +104,7 @@ $slick-dot-radius: 12px;
             backface-visibility: hidden;
             visibility: hidden;
             display: none;
+            cursor: pointer;
         }
 
         .slick-slide.slick-cloned {

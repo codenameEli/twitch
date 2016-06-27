@@ -1,10 +1,54 @@
 .dual-rotating-slideshow-container {
     display: table;
     width: 100%;
+    height: 326px;
 
-    .slideshow {
+    .slick-slider {
         width: 50%;
+        height: 326px;
         display: block;
         float: left;
+
+        .slick-list {
+            perspective: 1080px;
+            perspective-origin: 50% 50%;
+            height: 326px !important;
+        }
+
+        .slick-track {
+            position: absolute;
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100% !important;
+            transition: transform 1.5s cubic-bezier(0.56, -0.32, 0.92, 0.62);
+            top: 0 !important;
+            .slick-slide {
+                height: 326px;
+            }
+
+            .cube-top {
+                transform: rotateX(90deg) translateZ(159px) scaleX(1);
+                visibility: visible;
+                display: block;
+            }
+
+            .cube-front {
+                transform: rotateX(0deg) translateZ(166px) scaleX(1);
+                visibility: visible;
+                display: block;
+            }
+
+            .cube-bottom {
+                transform: rotateX(-90deg) translateZ(162px) translateX(0px) scaleX(1);
+                visibility: visible;
+                display: block;
+            }
+
+            .cube-back {
+                transform: rotateX(180deg) translateZ(146px) translateX(0px) scaleX(1);
+                visibility: visible;
+                display: block;
+            }
+        }
     }
 }

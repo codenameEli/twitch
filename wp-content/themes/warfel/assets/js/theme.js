@@ -97,13 +97,14 @@ jQuery(document).ready(function($) {
 //
 //     window.setTimeout( ubermenuOpenSubmenus, 500 );
 // // END UberMenu Force Open Menu Items for Styling
-    function slickCubeRotator(element) {
+    function slickCubeRotator(element, translateZ) {
         return {
             element: element,
             degreesRotated: 0,
             previousSlideIndex: 0,
+            translateZ: translateZ,
 
-            init: function (element) {
+            init: function () {
                 this.addEventListeners();
             },
 
@@ -140,12 +141,12 @@ jQuery(document).ready(function($) {
                         return;
                     }
                     if (currentSlide < nextSlide) {
-                        console.log("ROTATING FORWARDS", currentSlide, nextSlide);
+                        console.log("ROTATING FORWARDS", currentSlide, nextSlide, self.degreesRotated);
                         self.degreesRotated += 90;
                     }
                     else if (currentSlide === slick.slideCount-1) {
                         console.log("RESETING", currentSlide, nextSlide);
-                        self.degreesRotated = 0;
+                        self.degreesRotated += 90;
                     }
                     else if ( currentSlide > nextSlide && currentSlide !== slick.slideCount-1 ) {
                         console.log("ROTATING BACKWARDS", currentSlide, nextSlide,slick.slideCount);
@@ -153,7 +154,7 @@ jQuery(document).ready(function($) {
                     }
 
                     slick.$slideTrack.css({
-                        transform: 'translateZ(-44vh) rotateX(' + self.degreesRotated + 'deg)'
+                        transform: 'translateZ(' + self.translateZ + ') rotateX(' + self.degreesRotated + 'deg)'
                     });
                 });
 
@@ -288,11 +289,13 @@ jQuery(document).ready(function($) {
             }
         }
     };
-    var leftSideSlideshow = new slickCubeRotator('#leftSideSlideshow');
-    var rightSideSlideshow = new slickCubeRotator('#rightSideSlideshow');
-    var heroSlideshow = new slickCubeRotator('#heroSlideshow');
+    var leftSideSlideshow = new slickCubeRotator('#leftSideSlideshow', '-146px');
+    var rightSideSlideshow = new slickCubeRotator('#rightSideSlideshow', '-146px');
+    var heroSlideshow = new slickCubeRotator('#heroSlideshow', '-44vh');
     leftSideSlideshow.init();
     rightSideSlideshow.init();
+    heroSlideshow.init();
+    ///transform: 'translateZ(-44vh) rotateX(' + self.degreesRotated + 'deg)'
 
     $('.slick').slick();
 });

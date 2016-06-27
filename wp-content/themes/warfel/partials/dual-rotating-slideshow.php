@@ -2,7 +2,7 @@
 $left_side_gallery = get_field('dual_rotating_slideshow_left_side_gallery');
 $right_side_gallery = get_field('dual_rotating_slideshow_right_side_gallery');
 $left_side_slick_args = array(
-    'autoplay' => true,
+    'autoplay' => false,
     'autoplaySpeed' => 2700,
     'dots' => true,
     'arrows' => false,
@@ -15,7 +15,7 @@ $left_side_slick_args = array(
     'verticalSwiping' => true
 );
 $right_side_slick_args = array(
-    'autoplay' => true,
+    'autoplay' => false,
     'autoplaySpeed' => 3500,
     'dots' => true,
     'arrows' => false,
