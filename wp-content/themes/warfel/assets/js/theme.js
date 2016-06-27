@@ -87,16 +87,16 @@ jQuery(document).ready(function($) {
     // searchForm.init();
 
 
-// // START UberMenu Force Open Menu Items for Styling
-//     var ubermenuOpenSubmenus = function() {
-//
-//         $( '.ubermenu' ).ubermenu( 'openSubmenu' , $( '.ubermenu-item' ) );
-//         // Mobile trigger
-//         $('.ubermenu-responsive-toggle').trigger('click');
-//     };
-//
-//     window.setTimeout( ubermenuOpenSubmenus, 500 );
-// // END UberMenu Force Open Menu Items for Styling
+// START UberMenu Force Open Menu Items for Styling
+    var ubermenuOpenSubmenus = function() {
+
+        $( '.ubermenu' ).ubermenu( 'openSubmenu' , $( '.ubermenu-item' ) );
+        // Mobile trigger
+        $('.ubermenu-responsive-toggle').trigger('click');
+    };
+
+    window.setTimeout( ubermenuOpenSubmenus, 500 );
+// END UberMenu Force Open Menu Items for Styling
 
     var slickCubeRotator = function(element, translateZ) {
         this.element = element;
@@ -240,6 +240,18 @@ jQuery(document).ready(function($) {
     heroSlideshow.init();
 
     $('.dual-rotating-slideshow-container .slick').on('click', '.slick-dots', function(event) {
+        var leftSlick = $('#leftSideSlideshow').slick('getSlick');
+        var rightSlick = $('#rightSideSlideshow').slick('getSlick');
+
+        console.log($(event.target).closest('.slick'));
+        if ( $(event.target).closest('.slick').attr('id') === 'leftSideSlideshow' ) {
+            rightSlick.slickGoTo( leftSlick.currentSlide );
+        } else {
+            leftSlick.slickGoTo( rightSlick.currentSlide );
+        }
+    });
+
+    $('.dual-rotating-slideshow-container .slick').on('swipe', function(event) {
         var leftSlick = $('#leftSideSlideshow').slick('getSlick');
         var rightSlick = $('#rightSideSlideshow').slick('getSlick');
 
