@@ -10,8 +10,21 @@ remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 )
 remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 
 add_action( 'genesis_before_content', 'tower_do_hero_slideshow' );
+add_action( 'genesis_before_content', 'tower_do_more_information_bar' );
 add_action( 'genesis_before_content', 'tower_do_cta_slideshows' );
 add_action( 'genesis_before_content', 'tower_do_repeatable_blocks' );
+
+function tower_do_more_information_bar()
+{
+    ?>
+    <div id="moreInformationBar" class="more-information-bar-wrapper">
+        <div class="more-information-bar">
+            <span class="triangle-down"></span>
+            <span>Scroll down to gather more information.</span>
+        </div>
+    </div>
+    <?php
+}
 
 function tower_do_hero_slideshow()
 {

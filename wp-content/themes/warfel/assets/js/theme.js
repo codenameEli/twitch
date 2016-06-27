@@ -86,16 +86,64 @@ jQuery(document).ready(function($) {
     };
     // searchForm.init();
 
+    var moreInformationBar = {
+        init: function()
+        {
+            this.$element = $('#moreInformationBar');
+            this.height = this.$element.height();
+            this.lastScroll;
+            this.addEventListeners();
+        },
+
+        detectScrollDown: function()
+        {
+            console.log("HELLO");
+            var scrollDistance = $(window).scrollTop();
+
+            if ( scrollDistance > moreInformationBar.height ) {
+                moreInformationBar.$element.addClass('hidden');
+                moreInformationBar.removeEventListeners();
+            }
+        },
+
+        scrollToContent: function()
+        {
+            var speed = 1000;
+            var offset = Math.round( $('#cta-slideshow-0').offset().top ) - $('.site-header').height();
+
+            $('html,body').animate({
+                scrollTop: offset
+            }, speed, 'swing');
+
+            moreInformationBar.$element.addClass('hidden');
+        },
+
+        removeEventListeners: function()
+        {
+            $(window).off('scroll', this.detectScrollDown);
+            moreInformationBar.$element.off('click', this.scrollToContent);
+        },
+
+        addEventListeners: function()
+        {
+            var self = this;
+
+            this.$element.on('click', this.scrollToContent);
+            $(window).on('scroll', this.detectScrollDown);
+        }
+    };
+    moreInformationBar.init();
+
 
 // START UberMenu Force Open Menu Items for Styling
-    var ubermenuOpenSubmenus = function() {
-
-        $( '.ubermenu' ).ubermenu( 'openSubmenu' , $( '.ubermenu-item' ) );
-        // Mobile trigger
-        $('.ubermenu-responsive-toggle').trigger('click');
-    };
-
-    window.setTimeout( ubermenuOpenSubmenus, 500 );
+//     var ubermenuOpenSubmenus = function() {
+//
+//         $( '.ubermenu' ).ubermenu( 'openSubmenu' , $( '.ubermenu-item' ) );
+//         // Mobile trigger
+//         $('.ubermenu-responsive-toggle').trigger('click');
+//     };
+//
+//     window.setTimeout( ubermenuOpenSubmenus, 500 );
 // END UberMenu Force Open Menu Items for Styling
 
     var slickCubeRotator = function(element, translateZ) {
