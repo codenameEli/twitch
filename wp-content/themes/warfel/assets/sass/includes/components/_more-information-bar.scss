@@ -4,22 +4,22 @@
         transform: translate3d(0, 0, 0);
     }
 
-    5% {
+    2.5% {
         animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
         transform: translate3d(0, -15px, 0);
     }
 
-    10% {
+    5% {
         animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
         transform: translate3d(0, 0, 0);
     }
 
-    15% {
+    7.5% {
         animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
         transform: translate3d(0, -8px, 0);
     }
 
-    20% {
+    10% {
         animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
         transform: translate3d(0, 0, 0);
     }
@@ -63,8 +63,8 @@
     @include align-items(center);
     animation-name: bounce;
     transform-origin: center bottom;
-    animation-duration: 2.7s;
-    animation-delay: 5s;
+    animation-duration: 5.4s;
+    animation-delay: 4.7s;
     animation-fill-mode: both;
     animation-timing-function: ease;
     animation-iteration-count: 2;
