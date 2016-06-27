@@ -97,214 +97,236 @@ jQuery(document).ready(function($) {
 //
 //     window.setTimeout( ubermenuOpenSubmenus, 500 );
 // // END UberMenu Force Open Menu Items for Styling
-    function slickCubeRotator(element, translateZ) {
-        return {
-            element: element,
-            degreesRotated: 0,
-            previousSlideIndex: 0,
-            translateZ: translateZ,
 
-            init: function () {
-                this.addEventListeners();
-            },
+    var slickCubeRotator = function(element, translateZ) {
+        this.element = element;
+        this.translateZ = translateZ;
+        this.degreesRotated = 0;
+        this.previousSlideIndex = 0;
+    }
 
-            setup: function(slick) {
-                var $prevSlide = $(slick.$slides[slick.slideCount - 1]);
-                var $currentSlide = $(slick.$slides[0]);
-                var $nextSlide = $(slick.$slides[1]);
-                var $lastSlide = $(slick.$slides[2]);
+    slickCubeRotator.prototype = $.extend(slickCubeRotator, {
+        init: function () {
+            this.addEventListeners();
+        },
 
-                $prevSlide.addClass('cube-top');
-                $currentSlide.addClass('cube-front');
-                $nextSlide.addClass('cube-bottom');
-                $lastSlide.addClass('cube-back');
+        setup: function(slick) {
+            var $prevSlide = $(slick.$slides[slick.slideCount - 1]);
+            var $currentSlide = $(slick.$slides[0]);
+            var $nextSlide = $(slick.$slides[1]);
+            var $lastSlide = $(slick.$slides[2]);
+
+            $prevSlide.addClass('cube-top');
+            $currentSlide.addClass('cube-front');
+            $nextSlide.addClass('cube-bottom');
+            $lastSlide.addClass('cube-back');
+
+            slick.$slideTrack.css({
+                transform: 'translateZ(' + self.translateZ + ') rotateX(' + self.degreesRotated + 'deg)'
+            });
+            // slick.slickSetOption('speed', 1500, true);
+        },
+
+        removeAllClasses: function () {
+            $(this.element).removeClass('cube-top cube-front cube-bottom cube-back');
+        },
+
+        addEventListeners: function () {
+            var self = this;
+
+            $(this.element).on('init', function (event, slick) {
+                self.setup(slick);
+            });
+
+            $(this.element).on('beforeChange', function (ev, slick, currentSlide, nextSlide) {
+                var slideDiff = nextSlide - currentSlide;
+                console.log( 'slideDiff', slideDiff);
+                console.log('in on beforeChang current = ', currentSlide);
+                console.log('in on beforeChang next = ', nextSlide);
+
+                if (currentSlide === nextSlide) {
+                    return;
+                }
+                else if ( currentSlide === slick.slideCount-1 && nextSlide === 0 ) {
+                    self.degreesRotated += 90;
+                }
+                else if ( currentSlide === 0 && nextSlide === slick.slideCount-1 ) {
+                    self.degreesRotated -= 90;
+                }
+                else {
+                    self.degreesRotated += 90 * slideDiff;
+                }
 
                 slick.$slideTrack.css({
                     transform: 'translateZ(' + self.translateZ + ') rotateX(' + self.degreesRotated + 'deg)'
                 });
-                // slick.slickSetOption('speed', 1500, true);
-            },
+            });
 
-            removeAllClasses: function () {
-                $(this.element).removeClass('cube-top cube-front cube-bottom cube-back');
-            },
+            $(this.element).on('afterChange', function (ev, slick, currentSlide) {
 
-            addEventListeners: function () {
-                var self = this;
+                slick.slickGoTo(currentSlide);
 
-                $(this.element).on('init', function (event, slick) {
+                var prevSlide = currentSlide === 0 ? slick.slideCount - 1 : currentSlide - 1;
+                var $prevSlide = $(slick.$slides[prevSlide]);
+                var $currentSlide = $(slick.$slides[currentSlide]);
+                var $nextSlide = $(slick.$slides[currentSlide + 1]);
+                var $lastSlide = $(slick.$slides[currentSlide + 2]);
+
+                self.removeAllClasses();
+
+                console.log('in on beforeChang current = ', currentSlide);
+
+
+                if (currentSlide % 4 === 1) {
+                    console.log('if ( currentSlide % 4 === 1 ) {');
+
+                    console.log($prevSlide, $currentSlide, $nextSlide, $lastSlide);
                     self.setup(slick);
-                });
+                    $currentSlide.addClass('cube-bottom');
+                    $prevSlide.addClass('cube-front');
+                    $nextSlide.addClass('cube-back');
+                    $lastSlide.addClass('cube-top');
+                }
 
-                $(this.element).on('beforeChange', function (ev, slick, currentSlide, nextSlide) {
-                    console.log('in on beforeChang current = ', currentSlide);
-                    console.log('in on beforeChang next = ', nextSlide);
+                else if (currentSlide % 4 === 2) {
+                    console.log('else if ( currentSlide % 4 === 2 ) {');
+                    $currentSlide.addClass('cube-back');
+                    $prevSlide.addClass('cube-bottom');
+                    $nextSlide.addClass('cube-top');
+                    $lastSlide.addClass('cube-front');
+                }
 
-                    if (currentSlide === nextSlide) {
-                        return;
-                    }
-                    console.log('currentSlide', currentSlide);
-                    console.log('nextSlide', nextSlide);
-                    console.log('slick.slideCount', slick.slideCount);
-                    if (
-                        currentSlide === 0 && nextSlide === slick.slideCount-1 ||
-                        currentSlide > nextSlide
-                    ) {
-                        console.log("ROTATING BACKWARDS ON THE FIRST SLIDE", currentSlide, nextSlide,slick.slideCount);
-                        self.degreesRotated -= 90;
-                    }
-                    else if (
-                        // currentSlide < nextSlide && nextSlide !== slick.slideCount-1 ||
-                        currentSlide < nextSlide ||
-                        currentSlide === slick.slideCount-1
-                    ) {
-                        console.log("ROTATING FORWARDS", currentSlide, nextSlide, self.degreesRotated);
-                        self.degreesRotated += 90;
-                    }
+                else if (currentSlide % 4 === 3) {
+                    console.log('else if ( currentSlide % 4 === 3 ) {');
+                    $currentSlide.addClass('cube-top');
+                    $prevSlide.addClass('cube-back');
+                    $nextSlide.addClass('cube-front');
+                    $lastSlide.addClass('cube-bottom');
+                }
 
-                    slick.$slideTrack.css({
-                        transform: 'translateZ(' + self.translateZ + ') rotateX(' + self.degreesRotated + 'deg)'
-                    });
-                });
+                else {
+                    console.log('else {');
+                    $prevSlide.addClass('cube-top');
+                    $currentSlide.addClass('cube-front');
+                    $nextSlide.addClass('cube-bottom');
+                    $lastSlide.addClass('cube-back');
+                }
 
-                $(this.element).on('afterChange', function (ev, slick, currentSlide) {
-
-                    slick.slickGoTo(currentSlide);
-
-                    var prevSlide = currentSlide === 0 ? slick.slideCount - 1 : currentSlide - 1;
-                    var $prevSlide = $(slick.$slides[prevSlide]);
-                    var $currentSlide = $(slick.$slides[currentSlide]);
-                    var $nextSlide = $(slick.$slides[currentSlide + 1]);
-                    var $lastSlide = $(slick.$slides[currentSlide + 2]);
-
-                    self.removeAllClasses();
-
-                    console.log('in on beforeChang current = ', currentSlide);
-
-
-                    if (currentSlide % 4 === 1) {
-                        console.log('if ( currentSlide % 4 === 1 ) {');
-
-                        console.log($prevSlide, $currentSlide, $nextSlide, $lastSlide);
-                        self.setup(slick);
-                        $currentSlide.addClass('cube-bottom');
-                        $prevSlide.addClass('cube-front');
-                        $nextSlide.addClass('cube-back');
-                        $lastSlide.addClass('cube-top');
-                    }
-
-                    else if (currentSlide % 4 === 2) {
-                        console.log('else if ( currentSlide % 4 === 2 ) {');
-                        $currentSlide.addClass('cube-back');
-                        $prevSlide.addClass('cube-bottom');
-                        $nextSlide.addClass('cube-top');
-                        $lastSlide.addClass('cube-front');
-                    }
-
-                    else if (currentSlide % 4 === 3) {
-                        console.log('else if ( currentSlide % 4 === 3 ) {');
-                        $currentSlide.addClass('cube-top');
-                        $prevSlide.addClass('cube-back');
-                        $nextSlide.addClass('cube-front');
-                        $lastSlide.addClass('cube-bottom');
-                    }
-
-                    // else if (currentSlide === 0) {
-                    //     console.log('else if ( currentSlide === 0 ) {');
-                    //     $currentSlide.addClass('cube-back');
-                    //     $prevSlide.addClass('cube-bottom');
-                    //     $nextSlide.addClass('cube-top');
-                    //     $lastSlide.addClass('cube-front');
-                    // }
-
-                    else {
-                        console.log('else {');
-                        $prevSlide.addClass('cube-top');
-                        $currentSlide.addClass('cube-front');
-                        $nextSlide.addClass('cube-bottom');
-                        $lastSlide.addClass('cube-back');
-                    }
-
-                });
-
-                // function getRelativeMousePosition(ev, element)
-                // {
-                //     console.log(ev.pageY);
-                //     console.log($(element).offset().top);
-                //     console.log($(element).height());
-                //     return ( ev.pageY - $(element).offset().top ) / $(element).height();
-                // }
-                // // Event to initiate drag, include touchstart events
-                // // _.$list.on('touchcancel.slick mouseleave.slick', {
-                // $('.slick').on('touchstart mousedown', function(ev){
-                //
-                //     var offset = $(this).offset();
-                //     var start = ev.pageY; // relative to the slide
-                //     var slideHeight = $(ev.target).height();
-                //
-                //
-                //     var mousepos = getRelativeMousePosition(ev, this);
-                //     console.log('mousepos',mousepos);
-                //     window.mousepos = mousepos;
-                //
-                //     window.eli = {};
-                //     window.eli.start = start;
-                //     window.eli.offset = offset;
-                //     window.eli.slideHeight = slideHeight;
-                //
-                //     // Drag start logic
-                //     // ...
-                //
-                //     // Event to end drag, may want to include touchend events
-                //     $(this).one('touchend mouseup', function(ev){
-                //
-                //         $(this).off('mousemove');
-                //         // Drag stop logic
-                //         // ...
-                //
-                //     }).on('touchmove mousemove', function(ev){
-                //         var diff = ev.pageY - start;
-                //
-                //         // var diff = diff - 450;
-                //         //
-                //         // var diff = diff * 90;
-                //         console.log(diff, 'diff');
-                //         console.log(ev.pageY, 'actualDiff');
-                //         console.log(start, 'actualDiff');
-                //         console.log(ev.pageY - start, 'actualDiff');
-                //         console.log( 'divide this bitch by 90', slideHeight - ( diff / slideHeight ) );
-                //
-                //
-                //
-                //         var mousepos = getRelativeMousePosition(ev, this);
-                //         console.log('mousepos',mousepos);
-                //         console.log( 'this is it', 90 * mousepos );
-                //
-                //         // if ( Math.sign(diff) === -1 ) {
-                //         //     console.log("GOING DOWN");
-                //         // }
-                //         //
-                //         // if ( Math.sign(diff) === 1 ) {
-                //         //     console.log('GOING UP');
-                //         // }
-                //         var elHeight = ev.target.offsetHeight;
-                //         console.log(elHeight);
-                //         console.log(start, ev.pageY, diff);
-                //         $('.slick-track').css({
-                //             transform: 'translateZ(-250px) rotateX(' + (90 * mousepos ) + 'deg)'
-                //         })
-                //     });
-                // });
-            }
+            });
         }
-    };
-    var leftSideSlideshow = new slickCubeRotator('#leftSideSlideshow', '-163px');
-    var rightSideSlideshow = new slickCubeRotator('#rightSideSlideshow', '-163px');
+    });
+
+    var dualRotator = function(element, translateZ) {
+        slickCubeRotator.call(this, element, translateZ);
+    }
+    dualRotator.prototype = $.extend(slickCubeRotator);
+    // dualRotator.prototype.addEventListeners = function() {
+    //     slickCubeRotator.addEventListeners.call(this);
+    //
+    //     $(this.element).on('init', function(event, slick){
+    //         console.log(slick);
+    //         slick.slickSetOption('speed', 1000);
+    //     });
+    //     $(this.element).on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    //         console.log("HELLO", this, event, slick);
+    //     });
+    // }
+
+    var leftSideSlideshow = new dualRotator('#leftSideSlideshow', '-163px');
+    var rightSideSlideshow = new dualRotator('#rightSideSlideshow', '-163px');
     var heroSlideshow = new slickCubeRotator('#heroSlideshow', '-44vh');
     leftSideSlideshow.init();
     rightSideSlideshow.init();
     heroSlideshow.init();
-    ///transform: 'translateZ(-44vh) rotateX(' + self.degreesRotated + 'deg)'
+
+    $('.dual-rotating-slideshow-container .slick').on('click', '.slick-dots', function(event) {
+        var leftSlick = $('#leftSideSlideshow').slick('getSlick');
+        var rightSlick = $('#rightSideSlideshow').slick('getSlick');
+
+        console.log($(event.target).closest('.slick'));
+        if ( $(event.target).closest('.slick').attr('id') === 'leftSideSlideshow' ) {
+            rightSlick.slickGoTo( leftSlick.currentSlide );
+        } else {
+            leftSlick.slickGoTo( rightSlick.currentSlide );
+        }
+    });
+
+    $('.dual-rotating-slideshow-container .slick').on('afterChange', function(event, slick, currentSlide, nextSlide){
+        console.log('CHECK THIS SHIT OUT', event, slick, currentSlide);
+        if ( slick.$slider.attr('id') === 'leftSideSlideshow' ) {
+            $('#rightSideSlideshow').slick('slickGoTo', currentSlide, true);
+        }
+    });
 
     $('.slick').slick();
 });
+
+
+// function getRelativeMousePosition(ev, element)
+// {
+//     console.log(ev.pageY);
+//     console.log($(element).offset().top);
+//     console.log($(element).height());
+//     return ( ev.pageY - $(element).offset().top ) / $(element).height();
+// }
+// // Event to initiate drag, include touchstart events
+// // _.$list.on('touchcancel.slick mouseleave.slick', {
+// $('.slick').on('touchstart mousedown', function(ev){
+//
+//     var offset = $(this).offset();
+//     var start = ev.pageY; // relative to the slide
+//     var slideHeight = $(ev.target).height();
+//
+//
+//     var mousepos = getRelativeMousePosition(ev, this);
+//     console.log('mousepos',mousepos);
+//     window.mousepos = mousepos;
+//
+//     window.eli = {};
+//     window.eli.start = start;
+//     window.eli.offset = offset;
+//     window.eli.slideHeight = slideHeight;
+//
+//     // Drag start logic
+//     // ...
+//
+//     // Event to end drag, may want to include touchend events
+//     $(this).one('touchend mouseup', function(ev){
+//
+//         $(this).off('mousemove');
+//         // Drag stop logic
+//         // ...
+//
+//     }).on('touchmove mousemove', function(ev){
+//         var diff = ev.pageY - start;
+//
+//         // var diff = diff - 450;
+//         //
+//         // var diff = diff * 90;
+//         console.log(diff, 'diff');
+//         console.log(ev.pageY, 'actualDiff');
+//         console.log(start, 'actualDiff');
+//         console.log(ev.pageY - start, 'actualDiff');
+//         console.log( 'divide this bitch by 90', slideHeight - ( diff / slideHeight ) );
+//
+//
+//
+//         var mousepos = getRelativeMousePosition(ev, this);
+//         console.log('mousepos',mousepos);
+//         console.log( 'this is it', 90 * mousepos );
+//
+//         // if ( Math.sign(diff) === -1 ) {
+//         //     console.log("GOING DOWN");
+//         // }
+//         //
+//         // if ( Math.sign(diff) === 1 ) {
+//         //     console.log('GOING UP');
+//         // }
+//         var elHeight = ev.target.offsetHeight;
+//         console.log(elHeight);
+//         console.log(start, ev.pageY, diff);
+//         $('.slick-track').css({
+//             transform: 'translateZ(-250px) rotateX(' + (90 * mousepos ) + 'deg)'
+//         })
+//     });
+// });
