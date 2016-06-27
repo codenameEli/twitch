@@ -27,6 +27,9 @@ function tower_do_hero_slideshow()
         'useCSS' => false,
         'useTransform' => false,
         'vertical' => true,
+        'pauseOnFocus' => false,
+        'pauseOnHover' => false,
+        'pauseOnDotsHover' => false,
         'verticalSwiping' => true
     );
     $hero_slideshow = new Hero_Slideshow( $gallery, $args );
