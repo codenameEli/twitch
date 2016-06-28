@@ -20,3 +20,12 @@ function tower_do_search_form()
     </div>
     <?php
 }
+
+add_action( 'genesis_after', 'tower_do_backdrop_overlay' );
+
+function tower_do_backdrop_overlay()
+{
+    ?>
+    <div id="backdropOverlayContainer"></div>
+    <?php
+}

@@ -120,6 +120,39 @@ jQuery(document).ready(function ($) {
     };
     moreInformationBar.init();
 
+    var ubermenuNavigation = {
+
+        $overlay: $('#backdropOverlayContainer'),
+        activeClass: 'activated',
+
+        init: function () {
+            this.addEventListeners();
+        },
+
+        openOverlay: function () {
+            this.$overlay.addClass(this.activeClass);
+        },
+
+        closeOverlay: function () {
+            this.$overlay.removeClass(this.activeClass);
+        },
+
+        addEventListeners: function() {
+            var self = this;
+
+            $('.ubermenu').on('ubermenuopen', function() {
+                $('.slick').slick('slickPause');
+                self.openOverlay();
+            });
+
+            $('.ubermenu').on('ubermenuclose', function() {
+                $('.slick').slick('slickPlay');
+                self.closeOverlay();
+            });
+        }
+    };
+    ubermenuNavigation.init();
+
 
 // START UberMenu Force Open Menu Items for Styling
 //     var ubermenuOpenSubmenus = function() {
@@ -137,6 +170,7 @@ jQuery(document).ready(function ($) {
         this.translateZ = translateZ;
         this.degreesRotated = 0;
         this.previousSlideIndex = 0;
+        this.slick = {};
     }
 
     slickCubeRotator.prototype = $.extend(slickCubeRotator, {
@@ -145,6 +179,7 @@ jQuery(document).ready(function ($) {
         },
 
         setup: function (slick) {
+            this.slick = slick;
             var $prevSlide = $(slick.$slides[slick.slideCount - 1]);
             var $currentSlide = $(slick.$slides[0]);
             var $nextSlide = $(slick.$slides[1]);
