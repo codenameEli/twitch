@@ -31,25 +31,16 @@ $submenu-max-height: 300px;
 .ubermenu.ubermenu-loc-primary {
     .ubermenu-nav {
         @include align-items(center);
-        @include justify-content(center);
         @include display(flex);
+        @include justify-content(center);
         @include flex-direction(row);
         font-size: em(17px);
         font-weight: normal;
         height: 113px;
 
-        .ubermenu-item {
-            height: 100%;
-            width: 100%;
-        }
-
         a {
             color: #404041;
             padding: 15px 15px 33px 20px;
-            @include align-items(center);
-            @include justify-content(center);
-            @include display(flex);
-            @include flex-direction(column);
             &:after {
                 display: none;
             }
