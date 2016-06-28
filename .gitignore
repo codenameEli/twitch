@@ -10,10 +10,8 @@
 wp-content/themes/**/assets/dist/*
 wp-content/themes/**/resources/dist/*
 wp-content/themes/**/composer.phar
-wp-content/themes/**/vendor/
 
-
-!wp-content/themes/*/vendor/
+!wp-content/themes/*/vxendor/
 
 # all files starting with .
 \.*
