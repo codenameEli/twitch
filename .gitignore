@@ -34,3 +34,4 @@ wp-content/plugins/wp-migrate-db-pro
 !/Gruntfile.js
 !/bower.json
 !/deploy.sh
+!/package.json

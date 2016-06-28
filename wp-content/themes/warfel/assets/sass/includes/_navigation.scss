@@ -1,5 +1,25 @@
 $submenu-max-height: 300px;
 
+// transition
+.ubermenu-transition-none .ubermenu-item .ubermenu-submenu-drop {
+    transition: height 1.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 300px !important;
+    transform: translateY(0px);
+    opacity: 1;
+    overflow: visible;
+    visibility: visible;
+    width: auto;
+    backface-visibility: hidden;
+    display: block;
+}
+
+.ubermenu-transition-none .ubermenu-item:active .ubermenu-submenu-drop {
+    height: 300px !important;
+}
+
+
 .nav-primary {
     display: flex!important;
     @include align-items(center);
@@ -11,15 +31,25 @@ $submenu-max-height: 300px;
 .ubermenu.ubermenu-loc-primary {
     .ubermenu-nav {
         @include align-items(center);
+        @include justify-content(center);
         @include display(flex);
         @include flex-direction(row);
-        @include justify-content(flex-start);
         font-size: em(17px);
         font-weight: normal;
+        height: 113px;
+
+        .ubermenu-item {
+            height: 100%;
+            width: 100%;
+        }
 
         a {
             color: #404041;
             padding: 15px 15px 33px 20px;
+            @include align-items(center);
+            @include justify-content(center);
+            @include display(flex);
+            @include flex-direction(column);
             &:after {
                 display: none;
             }
@@ -104,6 +134,11 @@ $submenu-max-height: 300px;
 
     // submenu
     .ubermenu-item-level-0 {
+        &.ubermenu-active {
+            .ubermenu-submenu {
+                height: 300px !important;
+            }
+        }
 
         .ubermenu-submenu {
             @include align-items(flex-start);
