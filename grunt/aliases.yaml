@@ -1,0 +1,13 @@
+default:
+  - 'sass'
+  - 'concat'
+  # - 'uglify'
+  - 'watch'
+
+prod:
+  - 'sass'
+  - 'concat'
+
+dev:
+  - 'sass'
+  - 'concat'
