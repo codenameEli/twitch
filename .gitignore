@@ -12,6 +12,9 @@ wp-content/themes/**/resources/dist/*
 wp-content/themes/**/composer.phar
 wp-content/themes/**/vendor/
 
+
+!wp-content/themes/*/vendor/
+
 # all files starting with .
 \.*
 
