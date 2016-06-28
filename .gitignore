@@ -1,0 +1,30 @@
+# Ignore everything
+*
+
+# But not these files...
+!*/
+!wp-content/plugins/**/*
+!wp-content/themes/**/*
+
+# Minified assets
+wp-content/themes/**/assets/dist/*
+wp-content/themes/**/resources/dist/*
+wp-content/themes/**/composer.phar
+wp-content/themes/**/vendor/
+
+# all files starting with .
+\.*
+
+# Known dev plugins
+wp-content/plugins/bugherd
+wp-content/plugins/enable-media-replace
+wp-content/plugins/genesis-visual-hook-guide
+wp-content/plugins/intuitive-custom-post-order
+wp-content/plugins/query-monitor
+wp-content/plugins/regenerate-thumbnails
+wp-content/plugins/toggle-psd
+wp-content/plugins/velvet-blues-update-urls
+wp-content/plugins/wordpress-importer
+wp-content/plugins/wp-migrate-db-pro
+
+!/.gitignore
