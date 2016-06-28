@@ -31,3 +31,6 @@ wp-content/plugins/wordpress-importer
 wp-content/plugins/wp-migrate-db-pro
 
 !/.gitignore
+!/Gruntfile.js
+!/bower.json
+!/deploy.sh
