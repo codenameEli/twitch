@@ -18,12 +18,12 @@ nav#ubermenu-main-71-primary {
         }
 
         .ubermenu-submenu-drop {
-            transition: all .3s cubic-bezier(0.18, 0.89, 0.32, 1.28) !important;
+            transition: all 0.3s ease-out !important;
             position: fixed;
             height: 300px !important;
             min-height: 0 !important;
             max-height: 300px !important;
-            transform: translateY(-305px);
+            transform: translateY(-350px);
             opacity: 1;
             overflow: visible;
             visibility: visible;

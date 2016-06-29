@@ -20,11 +20,12 @@ function tower_do_services_loop()
         'taxonomy' => 'project_type',
     );
     $terms = get_terms($args);
-    $wp_query = new WP_Query;
+//    $wp_query = new WP_Query;
+    $wp_query = $terms;
     ?>
     <section class="grid-loop-container">
         <?php
-        get_template_part('partials/loop/grid-loop');
+        get_template_part('partials/loop/grid-loop-item-image');
         ?>
     </section>
     <?php

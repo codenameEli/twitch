@@ -16,17 +16,18 @@
 }
 
 .site-header + * {
-    margin-top: 116px;
+    margin-top: 82px;
     .admin-bar & {
-        top: 148px;
+        top: 144px;
     }
 }
 
 // Search
 .search-form-container {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -10px;
+    right: 15px;
+    z-index: 200;
 }
 
 .search-form-container,
@@ -46,7 +47,7 @@
         transition: width 0.5s ease-in-out;
         height: 100%;
         position: absolute;
-        right: 62px;
+        right: 63px;
         background: #F1F1F2;
         text-indent: 32px;
         z-index: 100;
@@ -71,6 +72,11 @@
     right: 0;
     border: 0;
     top: 27px;
+
+    .fa {
+        font-size: em(18px);
+        transition: none;
+    }
 }
 
 #openSearchForm {
@@ -84,11 +90,11 @@
 .search-form-container:hover {
 
     .search-form {
-        z-index: 100;
+        opacity: 1;
     }
 
     #openSearchForm {
-        z-index: 20;
+        opacity: 0;
     }
 
     input[type="search"] {
