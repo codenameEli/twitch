@@ -120,7 +120,8 @@ jQuery(document).ready(function ($) {
     };
     moreInformationBar.init();
 
-    var ubermenuNavigation = {
+    var ubermenuNavigation;
+    ubermenuNavigation = {
 
         $overlay: $('#backdropOverlayContainer'),
         activeClass: 'activated',
@@ -140,12 +141,15 @@ jQuery(document).ready(function ($) {
         addEventListeners: function() {
             var self = this;
 
-            $('.ubermenu').on('ubermenuopen', function() {
+            $('.nav-primary').on('mouseenter', '.ubermenu-has-submenu-drop', function () {
+
+                console.info('*** UBER MENU OPEN ***');
                 $('.slick').slick('slickPause');
                 self.openOverlay();
             });
 
-            $('.ubermenu').on('ubermenuclose', function() {
+            $('.nav-primary').on('mouseleave', '.ubermenu-has-submenu-drop', function () {
+                console.info('*** UBER MENU CLOSE ***');
                 $('.slick').slick('slickPlay');
                 self.closeOverlay();
             });

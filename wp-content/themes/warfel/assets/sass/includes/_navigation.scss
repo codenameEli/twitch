@@ -1,31 +1,46 @@
 $submenu-max-height: 300px;
 
-// transition
-.ubermenu-transition-none .ubermenu-item .ubermenu-submenu-drop {
-    transition: height 1.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    max-height: 300px !important;
-    transform: translateY(0px);
-    opacity: 1;
-    overflow: visible;
-    visibility: visible;
-    width: auto;
-    backface-visibility: hidden;
-    display: block;
-}
+nav#ubermenu-main-71-primary {
+    z-index: initial;
 
-.ubermenu-transition-none .ubermenu-item:active .ubermenu-submenu-drop {
-    height: 300px !important;
-}
+    .ubermenu-item-level-0 {
+        z-index: 170;
+    }
 
+    .ubermenu-item.ubermenu-has-submenu-drop {
+        z-index: auto;
+        &.ubermenu-active .ubermenu-submenu-drop {
+            transform: translateY(0);
+        }
+
+        a.ubermenu-target {
+            z-index: 170;
+        }
+
+        .ubermenu-submenu-drop {
+            transition: all .3s cubic-bezier(0.18, 0.89, 0.32, 1.28) !important;
+            position: fixed;
+            height: 300px !important;
+            min-height: 0 !important;
+            max-height: 300px !important;
+            transform: translateY(-305px);
+            opacity: 1;
+            overflow: visible;
+            visibility: visible;
+            width: auto;
+            backface-visibility: hidden;
+            z-index: -1;
+        }
+    }
+}
 
 .nav-primary {
-    display: flex!important;
+    display: flex !important;
     @include align-items(center);
     @include display(flex);
     @include flex-direction(row);
     @include justify-content(center);
+    background-color: #FFF;
 }
 
 .ubermenu.ubermenu-loc-primary {
@@ -137,6 +152,7 @@ $submenu-max-height: 300px;
             @include flex-direction(row);
             @include justify-content(flex-start);
             max-height: $submenu-max-height !important;
+            margin-top: 20px;
 
             // items
             .ubermenu-item-level-1 {

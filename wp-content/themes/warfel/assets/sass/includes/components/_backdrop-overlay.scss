@@ -2,11 +2,12 @@
     position: fixed;
     top: 0;
     left: 0;
+    opacity: 0;
+    z-index: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: all .5s ease;
+    transition: all .5s ease .1s;
     &.activated {
         opacity: 1;
     }
